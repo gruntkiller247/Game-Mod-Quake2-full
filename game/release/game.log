@@ -1,0 +1,6 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(524,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  p_weapon.c
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(891,11): warning C4047: '==': 'int (__cdecl *)(void)' differs in levels of indirection from 'int'
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(887,6): warning C4189: 'randNum': local variable is initialized but not referenced
+     Creating library .\..\release\gamex86.lib and object .\..\release\gamex86.exp
+  game.vcxproj -> C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\release\gamex86.dll

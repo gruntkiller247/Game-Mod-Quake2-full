@@ -18,7 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 // g_weapon.c
-
+//#include <stdlib.h> 
 #include "g_local.h"
 #include "m_player.h"
 
@@ -346,6 +346,7 @@ void Use_Weapon (edict_t *ent, gitem_t *item)
 Drop_Weapon
 ================
 */
+//mattMod drop weapon
 void Drop_Weapon (edict_t *ent, gitem_t *item)
 {
 	int		index;
@@ -780,7 +781,70 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 
 	VectorSet(offset, 8, 8, ent->viewheight-8);
 	P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
+
 	fire_rocket (ent, start, forward, damage, 650, damage_radius, radius_damage);
+
+
+	//mattMod
+	//directly behind
+	forward[0] *= -1;
+	forward[1] *= -1;
+	forward[2] *= -1;
+	fire_rocket(ent, start, forward, damage, 650, damage_radius, radius_damage);
+
+	//to the right
+	fire_rocket(ent, start, right, damage, 650, damage_radius, radius_damage);
+
+	right[0] *= -1;
+	right[1] *= -1;
+	right[2] *= -1;
+
+	//to the left
+	fire_rocket(ent, start, right, damage, 650, damage_radius, radius_damage);
+
+
+
+	//back left
+	vec3_t diag;
+	VectorAdd(forward, right, diag);
+	VectorNormalize(diag);
+
+	fire_rocket(ent, start, diag, damage, 650, damage_radius, radius_damage);
+
+	//back right
+	right[0] *= -1;
+	right[1] *= -1;
+	right[2] *= -1;
+
+	vec3_t diag2;
+	VectorAdd(forward, right, diag2);
+	VectorNormalize(diag2);
+
+	fire_rocket(ent, start, diag2, damage, 650, damage_radius, radius_damage);
+
+	//not working
+	//front right
+
+	forward[0] *= -1;
+	forward[1] *= -1;
+	forward[2] *= -1;
+	vec3_t diag3;
+
+	VectorAdd(forward, right, diag3);
+	VectorNormalize(diag3);
+
+	fire_rocket(ent, start, diag3, damage, 650, damage_radius, radius_damage);
+
+	//front left
+	right[0] *= -1;
+	right[1] *= -1;
+	right[2] *= -1;
+	vec3_t diag4;
+	VectorAdd(forward, right, diag4);
+	VectorNormalize(diag4);
+
+	fire_rocket(ent, start, diag4, damage, 650, damage_radius, radius_damage);
+
 
 	// send muzzle flash
 	gi.WriteByte (svc_muzzleflash);
@@ -819,6 +883,20 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 	vec3_t	start;
 	vec3_t	offset;
 
+	//mattMod random drop for blaster
+	int randNum = rand() * (3+1);
+
+	//Con_Printf("Blaster Random Number rolled: %i", rand);
+
+	if (rand == 3)
+	{
+		//Drop_Weapon(ent,ent);
+	}
+	else
+	{
+		;
+	}
+
 	if (is_quad)
 		damage *= 4;
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
@@ -830,6 +908,19 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 	ent->client->kick_angles[0] = -1;
 
 	fire_blaster (ent, start, forward, damage, 1000, effect, hyper);
+
+	//mattMod
+	start[0] += right[0]* 10;
+	start[1] += right[1] *10;
+	start[2] += right[2]*10;
+	fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+
+	start[0] -= right[0] * 20;
+	start[1] -= right[1] * 20;
+	start[2] -= right[2] * 20;
+	fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+
+	//fire_rocket(ent, start, forward, 100, 8000, 100, 50);
 
 	// send muzzle flash
 	gi.WriteByte (svc_muzzleflash);
@@ -851,7 +942,10 @@ void Weapon_Blaster_Fire (edict_t *ent)
 	if (deathmatch->value)
 		damage = 15;
 	else
-		damage = 10;
+		damage = 0;
+
+
+
 	Blaster_Fire (ent, vec3_origin, damage, false, EF_BLASTER);
 	ent->client->ps.gunframe++;
 }
