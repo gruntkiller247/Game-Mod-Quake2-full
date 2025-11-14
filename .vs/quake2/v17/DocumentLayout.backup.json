@@ -7,12 +7,20 @@
       "RelativeMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|solutionrelative:game\\p_weapon.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\q_shared.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|solutionrelative:game\\q_shared.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_cmds.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|solutionrelative:game\\g_cmds.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_items.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|solutionrelative:game\\g_items.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_local.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|solutionrelative:game\\g_local.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F575AF4A-7BDD-47F6-B65F-F43C514E0069}|quake2.vcxproj|C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F575AF4A-7BDD-47F6-B65F-F43C514E0069}|quake2.vcxproj|solutionrelative:game\\game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_weapon.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -23,12 +31,12 @@
       "RelativeMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|solutionrelative:game\\g_main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_local.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|solutionrelative:game\\g_local.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\p_client.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|solutionrelative:game\\p_client.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_func.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|solutionrelative:game\\g_func.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\q_shared.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{99BC3F01-A7EE-4881-939F-8A5EB75E1973}|game\\game.vcxproj|solutionrelative:game\\q_shared.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,21 +46,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 10,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "g_weapon.c",
-              "DocumentMoniker": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_weapon.c",
-              "RelativeDocumentMoniker": "game\\g_weapon.c",
-              "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_weapon.c",
-              "RelativeToolTip": "game\\g_weapon.c",
-              "ViewState": "AgIAAF0CAAAAAAAAAAAQwGsCAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-11-05T20:31:05.753Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -71,41 +66,75 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "g_func.c",
-              "DocumentMoniker": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_func.c",
-              "RelativeDocumentMoniker": "game\\g_func.c",
-              "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_func.c",
-              "RelativeToolTip": "game\\g_func.c",
-              "ViewState": "AgIAAOgGAAAAAAAAAAAQwNwGAAA9AAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "g_items.c",
+              "DocumentMoniker": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_items.c",
+              "RelativeDocumentMoniker": "game\\g_items.c",
+              "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_items.c",
+              "RelativeToolTip": "game\\g_items.c",
+              "ViewState": "AgIAABMEAAAAAAAAAAAQwCQEAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-11-05T20:18:01.639Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-07T20:07:22.23Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "g_local.h",
-              "DocumentMoniker": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_local.h",
-              "RelativeDocumentMoniker": "game\\g_local.h",
-              "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_local.h",
-              "RelativeToolTip": "game\\g_local.h",
-              "ViewState": "AgIAAO0AAAAAAAAAAAAQwAQBAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-05T20:15:30.102Z",
-              "EditorCaption": ""
+              "Title": "g_weapon.c",
+              "DocumentMoniker": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_weapon.c",
+              "RelativeDocumentMoniker": "game\\g_weapon.c",
+              "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_weapon.c",
+              "RelativeToolTip": "game\\g_weapon.c",
+              "ViewState": "AgIAAAMBAAAAAAAAAAAQwBEBAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-11-07T20:05:47.992Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "g_main.c",
               "DocumentMoniker": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_main.c",
               "RelativeDocumentMoniker": "game\\g_main.c",
               "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_main.c",
               "RelativeToolTip": "game\\g_main.c",
-              "ViewState": "AgIAAIsAAAAAAAAAAAAQwJkAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAQwE4AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-11-05T20:14:16.402Z",
+              "WhenOpened": "2025-11-07T19:44:47.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "p_client.c",
+              "DocumentMoniker": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\p_client.c",
+              "RelativeDocumentMoniker": "game\\p_client.c",
+              "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\p_client.c",
+              "RelativeToolTip": "game\\p_client.c",
+              "ViewState": "AgIAAMgBAAAAAAAAAAAQwKkBAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-11-07T18:58:38.38Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "q_shared.c",
+              "DocumentMoniker": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\q_shared.c",
+              "RelativeDocumentMoniker": "game\\q_shared.c",
+              "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\q_shared.c",
+              "RelativeToolTip": "game\\q_shared.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-11-05T20:52:03.484Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "g_cmds.c",
+              "DocumentMoniker": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_cmds.c",
+              "RelativeDocumentMoniker": "game\\g_cmds.c",
+              "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_cmds.c",
+              "RelativeToolTip": "game\\g_cmds.c",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAQwCEAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-11-07T18:53:44.6Z",
               "EditorCaption": ""
             },
             {
@@ -116,36 +145,34 @@
               "RelativeDocumentMoniker": "game\\p_weapon.c",
               "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\p_weapon.c",
               "RelativeToolTip": "game\\p_weapon.c",
-              "ViewState": "AgIAADcDAAAAAAAAAAAgwEoDAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAQwI0AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-11-05T15:53:31.284Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "g_items.c",
-              "DocumentMoniker": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_items.c",
-              "RelativeDocumentMoniker": "game\\g_items.c",
-              "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_items.c",
-              "RelativeToolTip": "game\\g_items.c",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBcAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-11-05T20:10:26.728Z",
-              "EditorCaption": ""
+              "DocumentIndex": 3,
+              "Title": "g_local.h",
+              "DocumentMoniker": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_local.h",
+              "RelativeDocumentMoniker": "game\\g_local.h",
+              "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\g_local.h",
+              "RelativeToolTip": "game\\g_local.h",
+              "ViewState": "AgIAAFoCAAAAAAAAAAAQwGgCAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-07T19:30:54.542Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "q_shared.c",
-              "DocumentMoniker": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\q_shared.c",
-              "RelativeDocumentMoniker": "game\\q_shared.c",
-              "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\q_shared.c",
-              "RelativeToolTip": "game\\q_shared.c",
-              "ViewState": "AgIAAKwCAAAAAAAAAAAQwKgCAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-11-05T20:52:03.484Z",
-              "EditorCaption": ""
+              "DocumentIndex": 4,
+              "Title": "game.h",
+              "DocumentMoniker": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\game.h",
+              "RelativeDocumentMoniker": "game\\game.h",
+              "ToolTip": "C:\\Users\\Matthew\\source\\repos\\gruntkiller247\\Game-Mod-Quake2-full\\game\\game.h",
+              "RelativeToolTip": "game\\game.h",
+              "ViewState": "AgIAAOgAAAAAAAAAAAAgwP4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-08T16:26:42.926Z"
             }
           ]
         }

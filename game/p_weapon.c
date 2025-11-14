@@ -114,7 +114,7 @@ void PlayerNoise(edict_t *who, vec3_t where, int type)
 	gi.linkentity (noise);
 }
 
-
+//mattMod weapon pickup
 qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 {
 	int			index;
@@ -130,6 +130,16 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	}
 
 	other->client->pers.inventory[index]++;
+
+	/*if (ent->item == FindItem("weapon_rocketlauncher"))
+	{
+		//mattMod check rocket
+		gi.cprintf(other,PRINT_HIGH,"Picked Up a Rocket!");
+	}
+	else
+	{
+		gi.cprintf(other, PRINT_HIGH, "In the else somehow!");
+	}*/
 
 	if (!(ent->spawnflags & DROPPED_ITEM) )
 	{
@@ -346,7 +356,6 @@ void Use_Weapon (edict_t *ent, gitem_t *item)
 Drop_Weapon
 ================
 */
-//mattMod drop weapon
 void Drop_Weapon (edict_t *ent, gitem_t *item)
 {
 	int		index;
@@ -785,8 +794,28 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 	fire_rocket (ent, start, forward, damage, 650, damage_radius, radius_damage);
 
 
-	//mattMod
-	//directly behind
+	//mattMod 
+	//Com_Printf("Bigus\n");
+	Com_Printf("Inside Player Rocket!\n");
+
+	//if(ent->)
+	Com_Printf("Adding Health!\n");
+	
+	if (!ent->health)
+	{
+		Com_Printf("Player has no Health: Must be dead somehow. L_");
+	}
+	else
+	{
+		ent->health += 10;
+		ent->max_health += 10;
+	}
+	
+	
+	
+	
+	
+	/*//directly behind
 	forward[0] *= -1;
 	forward[1] *= -1;
 	forward[2] *= -1;
@@ -843,7 +872,7 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 	VectorAdd(forward, right, diag4);
 	VectorNormalize(diag4);
 
-	fire_rocket(ent, start, diag4, damage, 650, damage_radius, radius_damage);
+	fire_rocket(ent, start, diag4, damage, 650, damage_radius, radius_damage);*/
 
 
 	// send muzzle flash
@@ -884,13 +913,13 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 	vec3_t	offset;
 
 	//mattMod random drop for blaster
-	int randNum = rand() * (3+1);
+	//int randNum = rand() * (3+1);
 
 	//Con_Printf("Blaster Random Number rolled: %i", rand);
 
 	if (rand == 3)
 	{
-		//Drop_Weapon(ent,ent);
+		;
 	}
 	else
 	{
@@ -1526,3 +1555,10 @@ void Weapon_BFG (edict_t *ent)
 
 
 //======================================================================
+
+//mattMod
+
+void GenerateMods(edict_t *ent)
+{
+	//do stuff
+}

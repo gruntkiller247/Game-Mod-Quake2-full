@@ -877,8 +877,13 @@ typedef struct
 
 // this structure is cleared on each PutClientInServer(),
 // except for 'client->pers'
-struct gclient_s
+struct gclient_s //mattMod This is the player def
 {
+	//mattMod
+	int rocketModded;
+	int rocketShots;
+	int rocketHeals;
+
 	// known to server
 	player_state_t	ps;				// communicated by server to clients
 	int				ping;

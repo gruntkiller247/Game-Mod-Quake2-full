@@ -20,6 +20,35 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "g_local.h"
 #include "m_player.h"
 
+//mattMod
+/*void Cmd_spawnRocketLauncher(edict_t* ent)
+{
+	if (!ent->client)
+	{
+		return;
+	}
+
+	//yoink!
+	vec3_t	offset, start;
+	vec3_t	forward, right;
+	AngleVectors(ent->client->v_angle, forward, right, NULL);
+
+	gitem_t* weapon = FindItem("weapon_rocketlauncher");
+	edict_t* item;
+
+
+	if (!weapon)
+	{
+		SpawnItem(NULL, weapon);
+		gi.linkentity(weapon);
+
+	}
+	else
+	{
+		Com_Printf("Weapon Rocket Launcher not found\n");
+	}
+
+}*/
 
 char *ClientTeam (edict_t *ent)
 {
@@ -989,4 +1018,10 @@ void ClientCommand (edict_t *ent)
 		Cmd_PlayerList_f(ent);
 	else	// anything that doesn't match a command will be a chat
 		Cmd_Say_f (ent, false, true);
+
+	//mattMod
+	/*else if (Q_stricmp(cmd, "spawnRL") == 0)
+	{
+		Cmd_spawnRocketLauncher(ent);
+	}*/
 }

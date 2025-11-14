@@ -20,6 +20,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "g_local.h"
 #include "m_player.h"
 
+
+
+
 void ClientUserinfoChanged (edict_t *ent, char *userinfo);
 
 void SP_misc_teleporter_dest (edict_t *ent);
@@ -1292,9 +1295,15 @@ ClientBegin
 called when a client has finished connecting, and is ready
 to be placed into the game.  This will happen every level load.
 ============
-*/
+*///mattMod this is what activates on Player Spawn
 void ClientBegin (edict_t *ent)
 {
+	//mattMod
+	/*if (!ent->client->rocketHeals)
+	{
+		ent->client->rocketHeals = 0;
+	}*/
+
 	int		i;
 
 	ent->client = game.clients + (ent - g_edicts - 1);
