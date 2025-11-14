@@ -815,7 +815,7 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 	
 	
 	
-	/*//directly behind
+	//directly behind
 	forward[0] *= -1;
 	forward[1] *= -1;
 	forward[2] *= -1;
@@ -872,7 +872,7 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 	VectorAdd(forward, right, diag4);
 	VectorNormalize(diag4);
 
-	fire_rocket(ent, start, diag4, damage, 650, damage_radius, radius_damage);*/
+	fire_rocket(ent, start, diag4, damage, 650, damage_radius, radius_damage);
 
 
 	// send muzzle flash
