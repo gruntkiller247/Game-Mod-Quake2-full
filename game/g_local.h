@@ -862,6 +862,7 @@ typedef struct
 	int			helpchanged;
 
 	qboolean	spectator;			// client is a spectator
+
 } client_persistant_t;
 
 // client data that stays across deathmatch respawns
@@ -959,11 +960,16 @@ struct gclient_s
 
 	edict_t		*chase_target;		// player we are chasing
 	qboolean	update_chase;		// need to update chase info?
+
+
+
+	
 };
 
 
 struct edict_s
 {
+
 	entity_state_t	s;
 	struct gclient_s	*client;	// NULL if not a player
 									// the server expects the first part
@@ -1109,5 +1115,8 @@ struct edict_s
 	// common data blocks
 	moveinfo_t		moveinfo;
 	monsterinfo_t	monsterinfo;
+
+	//mattMod
+	int		rocketHeals;
 };
 

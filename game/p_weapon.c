@@ -774,6 +774,19 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 		radius_damage *= 4;
 	}
 
+	//mattMod
+	if (!ent->rocketHeals)
+	{
+		if(ent->rocketHeals == 1)
+			ent->health += 10;
+		Com_Printf("Player was healed as mod was on!\n");
+	}
+	else
+	{
+		Com_Printf("Inside Player Rocket!\n ent->rocketHeals was null!\n");
+	}
+
+
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
 
 	VectorScale (forward, -2, ent->client->kick_origin);
