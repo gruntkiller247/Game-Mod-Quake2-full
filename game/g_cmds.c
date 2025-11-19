@@ -21,6 +21,22 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "m_player.h"
 
 
+//mattMod
+void spawnRocketLauncher(edict_t* ent)
+{
+	Com_Printf("Called mattMod spawnRocketLauncher\n");
+
+	if (!ent->client)
+	{
+		return;
+	}
+
+
+	//vec3_t test = 
+	//edict_t* item = SpawnItem(ent, FindItem("weapon_rocketlauncher"));
+	
+}
+
 char *ClientTeam (edict_t *ent)
 {
 	char		*p;
@@ -987,6 +1003,8 @@ void ClientCommand (edict_t *ent)
 		Cmd_Wave_f (ent);
 	else if (Q_stricmp(cmd, "playerlist") == 0)
 		Cmd_PlayerList_f(ent);
+	else if (Q_stricmp(cmd, "spawnR") == 0) //mattMod
+		spawnRocketLauncher(ent);
 	else	// anything that doesn't match a command will be a chat
 		Cmd_Say_f (ent, false, true);
 }

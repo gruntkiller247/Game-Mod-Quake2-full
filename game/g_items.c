@@ -2128,7 +2128,7 @@ void SP_item_health (edict_t *self)
 
 	self->model = "models/items/healing/medium/tris.md2";
 	self->count = 10;
-	SpawnItem (self, FindItem ("Health"));
+	SpawnItem (self, FindItem ("Health")); //mattMod proper way to use SpawnItem
 	gi.soundindex ("items/n_health.wav");
 }
 

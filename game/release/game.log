@@ -3,23 +3,23 @@
 C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_ai.c(771,47): warning C4100: 'dist': unreferenced parameter
   g_chase.c
   g_cmds.c
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(34,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(57,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(58,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(722,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(725,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(808,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(809,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(810,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(821,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(828,2): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(875,7): warning C4459: declaration of 'st' hides global declaration
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(50,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(73,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(74,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(738,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(741,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(824,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(825,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(826,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(837,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(844,2): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(891,7): warning C4459: declaration of 'st' hides global declaration
       C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_local.h(456,21):
       see declaration of 'st'
   
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(897,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(885,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(893,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(913,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(901,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_cmds.c(909,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   g_combat.c
 C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_combat.c(370,51): warning C4100: 'attacker': unreferenced parameter
 C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\g_combat.c(370,36): warning C4100: 'targ': unreferenced parameter
@@ -395,9 +395,9 @@ C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_client.
 C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_client.c(933,89): warning C4100: 'point': unreferenced parameter
 C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_client.c(933,60): warning C4100: 'attacker': unreferenced parameter
 C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_client.c(933,40): warning C4100: 'inflictor': unreferenced parameter
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_client.c(1375,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_client.c(1380,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_client.c(1420,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_client.c(1381,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_client.c(1386,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_client.c(1426,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   p_hud.c
 C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_hud.c(234,4): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_hud.c(245,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
@@ -405,9 +405,10 @@ C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_hud.c(2
   p_view.c
 C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_view.c(42,27): warning C4100: 'angles': unreferenced parameter
   p_weapon.c
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(904,11): warning C4047: '==': 'int (__cdecl *)(void)' differs in levels of indirection from 'int'
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(900,6): warning C4189: 'randNum': local variable is initialized but not referenced
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(126,3): warning C4033: 'Pickup_Weapon' must return a value
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(851,11): warning C4552: '*': result of expression not used
   Generating Code...
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(224,1): warning C4715: 'Pickup_Weapon': not all control paths return a value
 C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_hud.c(423,1): warning C4701: potentially uninitialized local variable 'cells' used
      Creating library .\..\release\gamex86.lib and object .\..\release\gamex86.exp
-  game.vcxproj -> C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\release\gamex86.dll
+  game.vcxproj -> C:\quake2\mattMod\gamex86.dll

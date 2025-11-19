@@ -1117,6 +1117,13 @@ struct edict_s
 	monsterinfo_t	monsterinfo;
 
 	//mattMod
-	int		rocketHeals;
+	int		  rocketHeals;
+	int		  rocketAOE;
+	int		  rocketDMG;
+
+	int blasterBall;
+	
+	//this is null if not a weapon, otherwise has refrence to the player who picked up the weapon
+	edict_t*   mattPlayer;
 };
 

@@ -1298,7 +1298,13 @@ to be placed into the game.  This will happen every level load.
 void ClientBegin (edict_t *ent)
 {
 	//mattMod
-	ent->rocketHeals = 1;
+	//rocket mods
+	ent->rocketHeals = 0; //might make universal somehow
+	ent->rocketAOE = 0;
+	ent->rocketDMG = 0;
+
+	//blaster mods
+	ent->blasterBall = 0;
 
 	int		i;
 

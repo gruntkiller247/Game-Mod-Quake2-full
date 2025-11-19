@@ -117,10 +117,71 @@ void PlayerNoise(edict_t *who, vec3_t where, int type)
 
 qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 {
+	//mattMod pick
+	//ent seems to be the weapon
+	//other seems to be the player
+
+	if (!ent || !other)
+	{
+		return ;
+	}
+	
+	other->mattPlayer = ent;
+	//then call method to roll random mods?
+
+	if (Q_stricmp(ent->item->pickup_name,"weapon_rocketlauncher") == 0)
+	{
+		Com_Printf("Player picked up a rocket launcher!\n");
+		int num = rand() % 2;
+		//num = 1;
+		//Com_Printf("Rocket Heals num: %d", num);
+		//num = 0;
+
+		//if the rocket heals
+		if (num == 1)
+		{
+			ent->rocketHeals = 1;
+		}
+		else
+		{
+			ent->rocketHeals = 0; //sanity check: should be 0 by default;
+		}
+
+		num = rand() % 2;
+		//num = 1;
+		//Com_Printf("Rocket AOE num: %d", num);
+
+		//if the rocket has aoe shots
+		if (num == 1)
+		{
+			ent->rocketAOE = 1;
+		}
+		else
+		{
+			ent->rocketAOE = 0;
+		}
+		
+	}
+	else if (Q_stricmp(ent->item->pickup_name,"machinegun") == 0)
+	{
+		Com_Printf("Player picked up a machine gun!\n");
+	}
+	else
+	{
+		Com_Printf("Player picked up some item!\n");
+	}
+
+	/*if (ent->item == FindItem("Machinegun"))
+	{
+		Com_Printf("Picked up machinegun using pointers!\n");
+	}*/
+
 	int			index;
 	gitem_t		*ammo;
 
 	index = ITEM_INDEX(ent->item);
+
+	
 
 	if ( ( ((int)(dmflags->value) & DF_WEAPONS_STAY) || coop->value) 
 		&& other->client->pers.inventory[index])
@@ -774,17 +835,35 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 		radius_damage *= 4;
 	}
 
-	//mattMod
-	if (!ent->rocketHeals)
+	//mattMod rocket
+	
+	//if (ent->rocketHeals)
 	{
-		if(ent->rocketHeals == 1)
+		//debug commands 'cause give all does not trigger pickup methods
+		//ent->rocketAOE = rand() % 2;
+		//ent->rocketHeals = rand() % 2;
+		//ent->rocketDMG = rand() % 2;
+
+		Com_Printf("Inside Player Rocket!\n rocketHeals is: %d\n rocketAOE is: %d\n dmgMod is: %d\n", ent->rocketHeals, ent->rocketAOE, ent->rocketDMG);
+
+		if (ent->rocketDMG == 1)
+		{
+			damage * 2;
+		}
+
+		if (ent->rocketHeals == 1)
+		{
 			ent->health += 10;
-		Com_Printf("Player was healed as mod was on!\n");
+			Com_Printf("Player was healed as mod was on!\n");
+		}
+		else
+			Com_Printf("Player was not healed as mod is off!\n");
 	}
-	else
+	//else
 	{
-		Com_Printf("Inside Player Rocket!\n ent->rocketHeals was null!\n");
+		//Com_Printf("Inside Player Rocket!\n ent->rocketHeals was null!\n");
 	}
+
 
 
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
@@ -799,64 +878,72 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 
 
 	//mattMod
-	//directly behind
-	forward[0] *= -1;
-	forward[1] *= -1;
-	forward[2] *= -1;
-	fire_rocket(ent, start, forward, damage, 650, damage_radius, radius_damage);
+	if (ent->rocketAOE == 1)
+	{
+		//directly behind
+		forward[0] *= -1;
+		forward[1] *= -1;
+		forward[2] *= -1;
+		fire_rocket(ent, start, forward, damage, 650, damage_radius, radius_damage);
 
-	//to the right
-	fire_rocket(ent, start, right, damage, 650, damage_radius, radius_damage);
+		//to the right
+		fire_rocket(ent, start, right, damage, 650, damage_radius, radius_damage);
 
-	right[0] *= -1;
-	right[1] *= -1;
-	right[2] *= -1;
+		right[0] *= -1;
+		right[1] *= -1;
+		right[2] *= -1;
 
-	//to the left
-	fire_rocket(ent, start, right, damage, 650, damage_radius, radius_damage);
+		//to the left
+		fire_rocket(ent, start, right, damage, 650, damage_radius, radius_damage);
 
 
 
-	//back left
-	vec3_t diag;
-	VectorAdd(forward, right, diag);
-	VectorNormalize(diag);
+		//back left
+		vec3_t diag;
+		VectorAdd(forward, right, diag);
+		VectorNormalize(diag);
 
-	fire_rocket(ent, start, diag, damage, 650, damage_radius, radius_damage);
+		fire_rocket(ent, start, diag, damage, 650, damage_radius, radius_damage);
 
-	//back right
-	right[0] *= -1;
-	right[1] *= -1;
-	right[2] *= -1;
+		//back right
+		right[0] *= -1;
+		right[1] *= -1;
+		right[2] *= -1;
 
-	vec3_t diag2;
-	VectorAdd(forward, right, diag2);
-	VectorNormalize(diag2);
+		vec3_t diag2;
+		VectorAdd(forward, right, diag2);
+		VectorNormalize(diag2);
 
-	fire_rocket(ent, start, diag2, damage, 650, damage_radius, radius_damage);
+		fire_rocket(ent, start, diag2, damage, 650, damage_radius, radius_damage);
 
-	//not working
-	//front right
+		//not working
+		//front right
 
-	forward[0] *= -1;
-	forward[1] *= -1;
-	forward[2] *= -1;
-	vec3_t diag3;
+		forward[0] *= -1;
+		forward[1] *= -1;
+		forward[2] *= -1;
+		vec3_t diag3;
 
-	VectorAdd(forward, right, diag3);
-	VectorNormalize(diag3);
+		VectorAdd(forward, right, diag3);
+		VectorNormalize(diag3);
 
-	fire_rocket(ent, start, diag3, damage, 650, damage_radius, radius_damage);
+		fire_rocket(ent, start, diag3, damage, 650, damage_radius, radius_damage);
 
-	//front left
-	right[0] *= -1;
-	right[1] *= -1;
-	right[2] *= -1;
-	vec3_t diag4;
-	VectorAdd(forward, right, diag4);
-	VectorNormalize(diag4);
+		//front left
+		right[0] *= -1;
+		right[1] *= -1;
+		right[2] *= -1;
+		vec3_t diag4;
+		VectorAdd(forward, right, diag4);
+		VectorNormalize(diag4);
 
-	fire_rocket(ent, start, diag4, damage, 650, damage_radius, radius_damage);
+		fire_rocket(ent, start, diag4, damage, 650, damage_radius, radius_damage);
+	}
+	else
+	{
+		Com_Printf("ent->rocketAOE is 0!\n");
+	}
+
 
 
 	// send muzzle flash
@@ -895,20 +982,7 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 	vec3_t	forward, right;
 	vec3_t	start;
 	vec3_t	offset;
-
-	//mattMod random drop for blaster
-	int randNum = rand() * (3+1);
-
-	//Con_Printf("Blaster Random Number rolled: %i", rand);
-
-	if (rand == 3)
-	{
-		//Drop_Weapon(ent,ent);
-	}
-	else
-	{
-		;
-	}
+	
 
 	if (is_quad)
 		damage *= 4;
@@ -923,6 +997,7 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 	fire_blaster (ent, start, forward, damage, 1000, effect, hyper);
 
 	//mattMod
+	/*
 	start[0] += right[0]* 10;
 	start[1] += right[1] *10;
 	start[2] += right[2]*10;
@@ -933,7 +1008,7 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 	start[2] -= right[2] * 20;
 	fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
 
-	//fire_rocket(ent, start, forward, 100, 8000, 100, 50);
+	//fire_rocket(ent, start, forward, 100, 8000, 100, 50);*/
 
 	// send muzzle flash
 	gi.WriteByte (svc_muzzleflash);
