@@ -22,6 +22,32 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "g_local.h"
 #include "m_player.h"
 
+//mattMod methods I should have made ages ago
+
+static void healMatt(edict_t* ent)
+{
+	Com_Printf("Be healed!\n");
+}
+
+static void  jammedMatt()
+{
+	Com_Printf("YOUR GUN IS JAMMED!\n");
+}
+
+static void  instaMatt()
+{
+	Com_Printf("You have insta kill!\n");
+}
+
+static void backwardsMatt()
+{
+	Com_Printf("Your gun shoots backwards!\n");
+}
+
+static void regenMatt()
+{
+	Com_Printf("Your gun regens ammo!\n");
+}
 
 static qboolean	is_quad;
 static byte		is_silenced;
@@ -117,7 +143,7 @@ void PlayerNoise(edict_t *who, vec3_t where, int type)
 
 qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 {
-	//mattMod pick
+	//mattMod pickup
 	//ent seems to be the weapon
 	//other seems to be the player
 
@@ -126,45 +152,76 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 		return ;
 	}
 	
-	other->mattPlayer = ent;
-	//then call method to roll random mods?
+	other->mattPlayer = ent; //IDK What this is for but I am leaving it
+	//I think this is so weapons can remeber what mods they have?
+	// Call ent-> and fill their values based on what they are?
+	// Mess with this once I can drop weapons
+	
 
 	if (Q_stricmp(ent->item->pickup_name,"weapon_rocketlauncher") == 0)
 	{
 		Com_Printf("Player picked up a rocket launcher!\n");
-		int num = rand() % 2;
-		//num = 1;
-		//Com_Printf("Rocket Heals num: %d", num);
-		//num = 0;
+	
+		other->rocketAOE = rand() % 2;
+		other->rocketDMG = rand() % 2;
+		other->rocketNuke = rand() % 2;
+		//generic
+		other->rocketRegen = rand() % 5 + 1;
+		other->rocketJam = rand() % 5 + 1;
+		other->rocketHeal = rand() % 5 + 1;
+		other->rocketInstaKill = rand() % 5 + 1;
+		other->rocketGunBack = rand() % 5 + 1;
 
-		//if the rocket heals
-		if (num == 1)
-		{
-			ent->rocketHeals = 1;
-		}
-		else
-		{
-			ent->rocketHeals = 0; //sanity check: should be 0 by default;
-		}
+		Com_Printf("Rocket Mods:\n AOE: %d\nDMG: %d\nNuke: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta:%d\nBack: %d",
+			other->rocketAOE, other->rocketDMG, other->rocketNuke, other->rocketRegen,
+			other->rocketJam, other->rocketHeal, other->rocketInstaKill, other->rocketGunBack);
 
-		num = rand() % 2;
-		//num = 1;
-		//Com_Printf("Rocket AOE num: %d", num);
-
-		//if the rocket has aoe shots
-		if (num == 1)
-		{
-			ent->rocketAOE = 1;
-		}
-		else
-		{
-			ent->rocketAOE = 0;
-		}
 		
 	}
 	else if (Q_stricmp(ent->item->pickup_name,"machinegun") == 0)
 	{
 		Com_Printf("Player picked up a machine gun!\n");
+		srand(time(NULL));
+
+		int num = rand() % 3;
+		num = 1;
+		
+
+		if (num == 0)
+		{
+			other->machineGunBolt = 1;
+			other->machineGunDump = 0;
+		}
+		else if (num == 1)
+		{
+			other->machineGunBolt = 0;
+			other->machineGunDump = 1;
+		}
+		else
+		{
+			other->machineGunBolt = 0;
+			other->machineGunDump = 0;
+		}
+
+		other->machineShootRockets = rand() % 2;
+		other->machineGunRegen = rand() % 5 + 1;
+		other->machineGunJam = rand() % 5 + 1;
+		other->machineGunHeal = rand() % 5 + 1;
+		other->machineGunInstaKill = rand() % 5 + 1;
+		other->machineGunBack = rand() % 5 + 1;
+
+
+		Com_Printf("Machine Gun Mods:\nBolt: %d\nDump: %d\nRockets: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+			other->machineGunBolt, other->machineGunDump, other->machineShootRockets, other->machineGunRegen,
+			other->machineGunJam, other->machineGunHeal, other->machineGunInstaKill, other->machineGunBack);
+
+		
+
+	}
+	else if (Q_stricmp(ent->item->pickup_name, "weapon_shotgun") == 0)
+	{
+		Com_Printf("Player picked up shotgun!");
+		//mattmod shotgun
 	}
 	else
 	{
@@ -835,36 +892,48 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 		radius_damage *= 4;
 	}
 
+	if (ent->rocketJam == 5)
+	{
+		jammedMatt(ent);
+		return;
+	}
+
+	if (ent->rocketRegen == 5)
+	{
+		ent->client->pers.inventory[ent->client->ammo_index] += 1;
+	}
+
+	if (ent->rocketHeal == 5)
+	{
+		healMatt(ent);
+		ent->health += 10;
+	}
+
+	if (ent->rocketInstaKill == 5)
+	{
+		instaMatt(ent);
+		damage = 999;
+		damage_radius = 999;
+	}
+	else
+	{
+		ent->rocketDMG = rand() % 20;
+	}
+
+	if (ent->rocketGunBack == 5)
+	{
+		backwardsMatt(ent);
+		forward[0] *= -1;
+		forward[1] *= -1;
+		forward[2] *= -1;
+	}
+
 	//mattMod rocket
+	if (ent->rocketNuke == 1)
+	{
+		damage_radius = 9999;
+	}
 	
-	//if (ent->rocketHeals)
-	{
-		//debug commands 'cause give all does not trigger pickup methods
-		//ent->rocketAOE = rand() % 2;
-		//ent->rocketHeals = rand() % 2;
-		//ent->rocketDMG = rand() % 2;
-
-		Com_Printf("Inside Player Rocket!\n rocketHeals is: %d\n rocketAOE is: %d\n dmgMod is: %d\n", ent->rocketHeals, ent->rocketAOE, ent->rocketDMG);
-
-		if (ent->rocketDMG == 1)
-		{
-			damage * 2;
-		}
-
-		if (ent->rocketHeals == 1)
-		{
-			ent->health += 10;
-			Com_Printf("Player was healed as mod was on!\n");
-		}
-		else
-			Com_Printf("Player was not healed as mod is off!\n");
-	}
-	//else
-	{
-		//Com_Printf("Inside Player Rocket!\n ent->rocketHeals was null!\n");
-	}
-
-
 
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
 
@@ -941,7 +1010,7 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 	}
 	else
 	{
-		Com_Printf("ent->rocketAOE is 0!\n");
+		//Com_Printf("ent->rocketAOE is 0!\n");
 	}
 
 
@@ -994,9 +1063,102 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 	VectorScale (forward, -2, ent->client->kick_origin);
 	ent->client->kick_angles[0] = -1;
 
-	fire_blaster (ent, start, forward, damage, 1000, effect, hyper);
+	//fire_blaster (ent, start, forward, damage, 1000, effect, hyper);
+
+	
 
 	//mattMod
+	float* s = start;
+	float* r = right;
+	float* f = forward;
+
+	//remeber default values!
+	float s0 = s[0];
+	float s1 = s[1];
+	float s2 = s[2]; //This affects the Y coordiante
+
+
+	int go = 1;
+
+	if (!hyper && ent->blasterBack == 5)
+	{
+		f[0] *= -1;
+		f[1] *= -1;
+		f[2] *= -1;
+		//Com_Printf("Blaster shooting backwards!\n");
+		backwardsMatt(ent);
+	}
+		
+	
+	fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+
+
+	//mattMod blaster
+	//ent->blasterBall = 1;
+	//ent->blasterLine = 0;
+	if (!hyper && ent->blasterHeal == 1)
+	{
+		healMatt(ent);
+		ent->health += 10;
+	}
+
+	if (!hyper && ent->blasterLine == 1)
+	{
+
+		//Com_Printf("In blasterLine, shooting line:\n");
+		while (go <= 50) //horizontal right
+		{
+			fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+
+				s[0] += r[0] * 10;
+				s[1] += r[1] * 10;
+				s[2] += r[2] * 10; //PITCH
+
+				//s[2] += 20;
+
+			go++;
+
+		}
+
+		s[0] = s0; //angle?
+		s[1] = s1; //horizon
+		s[2] = s2; //height
+		go = 1;
+
+		while (go <= 50) //horizontal left
+		{
+			
+				fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+				s[0] -= r[0] * 10;
+				s[1] -= r[1] * 10;
+				s[2] -= r[2] * 10;
+
+			go++;
+		}
+	}
+
+	if (!hyper && ent->blasterBall == 1)
+	{
+		//Com_Printf("In blasterBall, shooting ball:\n");
+
+		fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+		for (int c = 0;c < 3;c++)
+		{
+			s[1] += r[1] * 10;
+			s[2] += r[2] * 10;
+			fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+		}
+
+		s[2] = s2;
+
+		for (int c = 0;c < 3;c++)
+		{
+			s[1] -= r[1] * 10;
+			s[2] -= r[2] * 10;
+			fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+		}
+	}
+
 	/*
 	start[0] += right[0]* 10;
 	start[1] += right[1] *10;
@@ -1029,10 +1191,26 @@ void Weapon_Blaster_Fire (edict_t *ent)
 
 	if (deathmatch->value)
 		damage = 15;
+	//mattMod blaster damage
+	else if (ent->blasterBall == 1)
+	{
+		damage = 8;
+	}
+	else if (ent->blasterLine == 1)
+	{
+		damage = 1;
+	}
+	else if (ent->blasterInstaKill == 1)
+	{
+		damage = 999;
+		instaMatt();
+	}
 	else
-		damage = 0;
-
-
+	{
+		damage = ent->blasterDMG;
+		Com_Printf("Blaster fired, no other mods Damage is: %d\n", damage);
+	}
+	
 
 	Blaster_Fire (ent, vec3_origin, damage, false, EF_BLASTER);
 	ent->client->ps.gunframe++;
@@ -1142,6 +1320,9 @@ void Machinegun_Fire (edict_t *ent)
 	int			kick = 2;
 	vec3_t		offset;
 
+
+
+
 	if (!(ent->client->buttons & BUTTON_ATTACK))
 	{
 		ent->client->machinegun_shots = 0;
@@ -1165,6 +1346,25 @@ void Machinegun_Fire (edict_t *ent)
 		NoAmmoWeaponChange (ent);
 		return;
 	}
+
+	Com_Printf("Inside shooting of machine gun\n");
+	Com_Printf("Jammed is: %d\n", ent->machineGunJam);
+	Com_Printf("Result of 5 and int: %d\n", ent->machineGunJam == 5);
+	Com_Printf("\n");
+
+	if (ent->machineGunJam == 5)
+	{
+		jammedMatt(ent);
+		return;
+	}
+
+	
+	if (ent->machineGunHeal == 5)
+	{
+		healMatt(ent);
+		ent->health += 10;
+	}
+		
 
 	if (is_quad)
 	{
@@ -1193,7 +1393,117 @@ void Machinegun_Fire (edict_t *ent)
 	AngleVectors (angles, forward, right, NULL);
 	VectorSet(offset, 0, 8, ent->viewheight-8);
 	P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
-	fire_bullet (ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_MACHINEGUN);
+
+	if (ent->machineGunBack == 5)
+	{
+		forward[0] *= -1;
+		forward[1] *= -1;
+		forward[2] *= -1;
+		backwardsMatt(ent);
+	}
+
+	
+	//mattMod Machinegun
+	if (ent->machineGunBolt == 1)
+	{
+		//Com_Printf("Inside machine gunBolt\n");
+		float* s = start;
+		float* r = right;
+		float* f = forward;
+
+		damage = 3;
+		kick = 0;
+
+		if (ent->machineGunInstaKill == 5)
+		{
+			instaMatt();
+			damage = 999;
+		}
+
+
+
+		if (ent->machineShootRockets == 1)
+		{
+			fire_rocket(ent, start, forward, damage, 650, 120, 120);
+		}
+		else
+			fire_bullet(ent, start, forward, damage, kick, 0, 0, MOD_MACHINEGUN);
+
+		s[0] += r[0] * 10;
+		s[1] += r[1] * 10;
+		s[2] += r[2] * 10;
+
+
+		if (ent->machineShootRockets == 1)
+		{
+			fire_rocket(ent, start, forward, damage, 650, 120, 120);
+		}
+		else
+			fire_bullet(ent, start, forward, damage, kick, 0, 0, MOD_MACHINEGUN);
+		//fire_bullet(ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_MACHINEGUN);
+		
+
+		s[0] -= r[0] * 20;
+		s[1] -= r[1] * 20;
+		s[2] -= r[2] * 20;
+
+		if (ent->machineShootRockets == 1)
+		{
+			fire_rocket(ent, start, forward, damage, 650, 120, 120);
+		}
+		else
+			fire_bullet(ent, start, forward, damage, kick, 0, 0, MOD_MACHINEGUN);
+		//fire_bullet(ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_MACHINEGUN);
+	}
+	else if (ent->machineGunDump == 1)
+	{
+		//mag dump the gun and massive kick
+		//how to get access to the gun's current ammo count?
+		//Com_Printf("Inside machine machineGunDump\n");
+		kick = 10000000;
+
+		if (ent->machineGunInstaKill == 5)
+		{
+			instaMatt();
+			damage = 999;
+		}
+
+		int num = ent->client->pers.inventory[ent->client->ammo_index];
+
+
+		for (int c = 1;c < num/2;c++)
+		{
+			if (ent->machineShootRockets == 1)
+			{
+				fire_rocket(ent, start, forward, damage, 650, 120, 120);
+			}
+			else
+				fire_bullet(ent, start, forward, damage, kick, 0, 0, MOD_MACHINEGUN);
+			//Com_Printf("Fired: %d \n",c);
+		}
+
+		ent->client->pers.inventory[ent->client->ammo_index = 0];
+
+
+
+	}
+	else if (ent->machineShootRockets == 1)
+	{
+		fire_rocket(ent, start, forward, damage, 650, 120, 120);
+	}
+	else
+	{
+		fire_bullet(ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_MACHINEGUN);
+	}
+
+	if (ent->machineGunRegen == 5)
+	{
+		//use this for generic ammo regen
+		regenMatt(ent);
+		ent->client->pers.inventory[ent->client->ammo_index]+=1;
+	}
+
+	
 
 	gi.WriteByte (svc_muzzleflash);
 	gi.WriteShort (ent-g_edicts);
@@ -1392,9 +1702,18 @@ void weapon_shotgun_fire (edict_t *ent)
 	}
 
 	if (deathmatch->value)
-		fire_shotgun (ent, start, forward, damage, kick, 500, 500, DEFAULT_DEATHMATCH_SHOTGUN_COUNT, MOD_SHOTGUN);
+	{
+		fire_shotgun(ent, start, forward, damage, kick, 500, 500, DEFAULT_DEATHMATCH_SHOTGUN_COUNT, MOD_SHOTGUN);
+	}
+	else if(false)
+	{
+		//shotgun mattmod shoot
+	}
 	else
-		fire_shotgun (ent, start, forward, damage, kick, 500, 500, DEFAULT_SHOTGUN_COUNT, MOD_SHOTGUN);
+	{
+		fire_shotgun(ent, start, forward, damage, kick, 500, 500, DEFAULT_SHOTGUN_COUNT, MOD_SHOTGUN);
+	}
+		
 
 	// send muzzle flash
 	gi.WriteByte (svc_muzzleflash);
@@ -1614,3 +1933,4 @@ void Weapon_BFG (edict_t *ent)
 
 
 //======================================================================
+

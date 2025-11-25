@@ -1117,11 +1117,47 @@ struct edict_s
 	monsterinfo_t	monsterinfo;
 
 	//mattMod
-	int		  rocketHeals;
+	//rocket mods
 	int		  rocketAOE;
 	int		  rocketDMG;
+	int		  rocketNuke;
+	//generic
+	int rocketRegen;
+	int rocketJam;
+	int rocketHeal;
+	int rocketInstaKill;
+	int rocketGunBack;
 
+	//blaster mods
 	int blasterBall;
+	int blasterLine;
+	int blasterDMG;
+	//generic
+	//blaster has no ammo so no regen!
+	//blaster should not be able to jam!
+	int blasterHeal; //Y
+	int blasterInstaKill;//Y
+	int blasterBack; //Y
+
+	//machine gun mods
+	int machineGunBolt;
+	int machineGunDump;
+	int machineShootRockets;
+	//generic
+	int machineGunRegen;
+	int machineGunJam;
+	int machineGunHeal;
+	int machineGunInstaKill;
+	int machineGunBack;
+
+	//normal shotgun mods
+	int shotgunSlug;
+	int shotgunMeme2;
+	int shotgunMeme3;
+
+	//generic
+	//Heal on shot, insta kill, regen ammo, jammed weapon (0 damage/does not shoot), weapon shoots backwards
+		
 	
 	//this is null if not a weapon, otherwise has refrence to the player who picked up the weapon
 	edict_t*   mattPlayer;

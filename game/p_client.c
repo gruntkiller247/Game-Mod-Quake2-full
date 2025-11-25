@@ -1298,13 +1298,44 @@ to be placed into the game.  This will happen every level load.
 void ClientBegin (edict_t *ent)
 {
 	//mattMod
+	
+
 	//rocket mods
-	ent->rocketHeals = 0; //might make universal somehow
 	ent->rocketAOE = 0;
 	ent->rocketDMG = 0;
+	ent->rocketNuke = 0;
+	//generic
+	ent-> rocketRegen = 0;
+	ent->rocketJam = 0;
+	ent->rocketHeal = 0;
+	ent->rocketInstaKill = 0;
+	ent->rocketGunBack = 0;
 
-	//blaster mods
-	ent->blasterBall = 0;
+	srand(time(NULL));
+
+	//blaster mods - only one to be randomized Here as it can't be picked up
+	ent->blasterBall = rand() % 2;
+	ent->blasterLine = rand() % 2;
+	ent->blasterDMG = rand() % 20 + 1;
+	//generic - no jamming nor regen
+	ent->blasterInstaKill = rand() % 5 + 1;
+	ent->blasterHeal = rand() % 5 + 1;
+	ent->blasterBack = rand() % 5 + 1;
+	
+
+	//machineGun mods
+	ent->machineGunBolt = 0;
+	ent->machineGunDump = 0;
+	ent->machineShootRockets = 0;
+	//generic
+	ent->machineGunRegen = 0;
+	ent->machineGunHeal = 0;
+	ent->machineGunInstaKill = 0;
+	ent->machineGunJam = 0;
+	ent->machineGunBack = 0;
+	Com_Printf("\nInside player spawn class\n");
+
+
 
 	int		i;
 
