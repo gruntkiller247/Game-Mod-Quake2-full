@@ -1335,6 +1335,17 @@ void ClientBegin (edict_t *ent)
 	ent->machineGunBack = 0;
 	Com_Printf("\nInside player spawn class\n");
 
+	//shotgun mods
+	ent->shotgunSlug = 0;
+	ent->shotgunMeme2 = 0;
+	ent->shotgunMeme3 = 0;
+	//generic
+	ent->shotgunGunRegen = 0;
+	ent->shotgunGunJam = 0;
+	ent->shotgunGunHeal = 0;
+	ent->shotgunGunInstaKill = 0;
+	ent->shotgunGunBack = 0;
+
 
 
 	int		i;

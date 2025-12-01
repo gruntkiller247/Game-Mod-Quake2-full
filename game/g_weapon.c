@@ -292,7 +292,18 @@ void fire_shotgun (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int k
 	int		i;
 
 	for (i = 0; i < count; i++)
-		fire_lead (self, start, aimdir, damage, kick, TE_SHOTGUN, hspread, vspread, mod);
+	{
+		if (self->shotgunMeme3 != 1)
+		{
+			fire_lead(self, start, aimdir, damage, kick, TE_SHOTGUN, hspread, vspread, mod);
+		}
+		else
+		{
+			fire_lead(self, start, aimdir, damage, kick, TE_SHOTGUN, 0, 0, mod);
+		}
+		
+	}
+		
 }
 
 

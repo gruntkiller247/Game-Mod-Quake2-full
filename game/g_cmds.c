@@ -8,7 +8,7 @@ of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 See the GNU General Public License for more details.
 
@@ -22,18 +22,67 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
 //mattMod
-void spawnRocketLauncher(edict_t* ent)
+void spawnWeapon(edict_t* ent)
 {
-	Com_Printf("Called mattMod spawnRocketLauncher\n");
+	Com_Printf("Called mattMod spawnWeapon\n");
 
 	if (!ent->client)
 	{
 		return;
 	}
 
+	char* name = gi.argv(1);
+	edict_t* w = G_Spawn();
+	VectorCopy(ent->s.origin, w->s.origin);
+	//w->s.origin[2] += 16;
 
-	//vec3_t test = 
-	//edict_t* item = SpawnItem(ent, FindItem("weapon_rocketlauncher"));
+
+	if (Q_stricmp(name, "shotgun") == 0)
+	{
+		w->classname = "weapon_shotgun";
+	}
+	else if (Q_stricmp(name, "supershotgun") == 0)
+	{
+		w->classname = "weapon_supershotgun";
+	}
+	else if (Q_stricmp(name, "machinegun") == 0)
+	{
+		w->classname = "weapon_machinegun";
+	}
+	else if (Q_stricmp(name, "chaingun") == 0)
+	{
+		w->classname = "weapon_chaingun";
+	}
+	else if (Q_stricmp(name, "grenadelauncher") == 0)
+	{
+		w->classname = "weapon_grenadelauncher";
+	}
+	else if (Q_stricmp(name, "rocketlauncher") == 0)
+	{
+		w->classname = "weapon_rocketlauncher";
+	}
+	else if (Q_stricmp(name, "hyperblaster") == 0)
+	{
+		w->classname = "weapon_hyperblaster";
+	}
+	else if (Q_stricmp(name, "railgun") == 0)
+	{
+		w->classname = "weapon_railgun";
+	}
+	else if (Q_stricmp(name, "bfg") == 0)
+	{
+		w->classname = "weapon_bfg";
+	}
+	else
+	{
+		Com_Printf("mattMod spawnWeapon: Not a weapon!\n");
+		return;
+	}
+
+	//w->classname = name;
+	
+	ED_CallSpawn(w);
+
 	
 }
 
@@ -1003,8 +1052,8 @@ void ClientCommand (edict_t *ent)
 		Cmd_Wave_f (ent);
 	else if (Q_stricmp(cmd, "playerlist") == 0)
 		Cmd_PlayerList_f(ent);
-	else if (Q_stricmp(cmd, "spawnR") == 0) //mattMod
-		spawnRocketLauncher(ent);
+	else if (Q_stricmp(cmd, "spawn") == 0) //mattMod
+		spawnWeapon(ent);
 	else	// anything that doesn't match a command will be a chat
 		Cmd_Say_f (ent, false, true);
 }

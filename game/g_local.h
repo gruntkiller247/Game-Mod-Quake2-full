@@ -1154,6 +1154,12 @@ struct edict_s
 	int shotgunSlug;
 	int shotgunMeme2;
 	int shotgunMeme3;
+	//generic
+	int shotgunGunRegen;
+	int shotgunGunJam;
+	int shotgunGunHeal;
+	int shotgunGunInstaKill;
+	int shotgunGunBack;
 
 	//generic
 	//Heal on shot, insta kill, regen ammo, jammed weapon (0 damage/does not shoot), weapon shoots backwards

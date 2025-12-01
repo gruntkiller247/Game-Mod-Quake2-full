@@ -158,8 +158,9 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	// Mess with this once I can drop weapons
 	
 
-	if (Q_stricmp(ent->item->pickup_name,"weapon_rocketlauncher") == 0)
+	if (Q_stricmp(ent->item->pickup_name,"Rocket Launcher") == 0)
 	{
+		//pickup rocket
 		Com_Printf("Player picked up a rocket launcher!\n");
 	
 		other->rocketAOE = rand() % 2;
@@ -172,7 +173,7 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 		other->rocketInstaKill = rand() % 5 + 1;
 		other->rocketGunBack = rand() % 5 + 1;
 
-		Com_Printf("Rocket Mods:\n AOE: %d\nDMG: %d\nNuke: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta:%d\nBack: %d",
+		Com_Printf("Rocket Mods:\n AOE: %d\nDMG: %d\nNuke: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta:%d\nBack: %d\n",
 			other->rocketAOE, other->rocketDMG, other->rocketNuke, other->rocketRegen,
 			other->rocketJam, other->rocketHeal, other->rocketInstaKill, other->rocketGunBack);
 
@@ -180,11 +181,12 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	}
 	else if (Q_stricmp(ent->item->pickup_name,"machinegun") == 0)
 	{
+		//pickup machine
 		Com_Printf("Player picked up a machine gun!\n");
 		srand(time(NULL));
 
 		int num = rand() % 3;
-		num = 1;
+		//num = 1;
 		
 
 		if (num == 0)
@@ -218,10 +220,50 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 		
 
 	}
-	else if (Q_stricmp(ent->item->pickup_name, "weapon_shotgun") == 0)
+	else if (Q_stricmp(ent->item->pickup_name, "Shotgun") == 0)
 	{
-		Com_Printf("Player picked up shotgun!");
-		//mattmod shotgun
+		//pickup shotgun
+		Com_Printf("Player picked up shotgun!\n");
+		srand(time(NULL));
+
+		int num = rand() % 2;
+		//num = 1;
+
+		if (num == 1)
+		{
+			other->shotgunMeme2 = 1;
+		}
+		num = rand() % 2;
+		num = 2;
+
+		if (num == 1)
+		{
+			other->shotgunSlug = 1;
+		}
+		else
+		{
+			other->shotgunMeme3 = 1;
+		}
+		
+
+		
+
+		other->shotgunGunRegen = rand() % 5 + 1;
+		other->shotgunGunJam = rand() % 5 + 1;
+		other->shotgunGunHeal = rand() % 5 + 1;
+		other->shotgunGunInstaKill = rand() % 5 + 1;
+		other->shotgunGunBack = rand() % 5 + 1;
+
+		/*other->shotgunGunRegen = 5;
+		other->shotgunGunJam = rand() % 5 + 1;
+		other->shotgunGunHeal = 5;
+		other->shotgunGunInstaKill = 5;
+		other->shotgunGunBack = 5;*/
+
+
+		Com_Printf("Shotgun Gun Mods:\nSlug: %d\nmeme2: %d\nmeme3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+			other->shotgunSlug, other->shotgunMeme2, other->shotgunMeme3, other->shotgunGunRegen,
+			other->shotgunGunJam, other->shotgunGunHeal, other->shotgunGunInstaKill, other->shotgunGunBack);
 	}
 	else
 	{
@@ -1347,10 +1389,10 @@ void Machinegun_Fire (edict_t *ent)
 		return;
 	}
 
-	Com_Printf("Inside shooting of machine gun\n");
-	Com_Printf("Jammed is: %d\n", ent->machineGunJam);
-	Com_Printf("Result of 5 and int: %d\n", ent->machineGunJam == 5);
-	Com_Printf("\n");
+	//Com_Printf("Inside shooting of machine gun\n");
+	//Com_Printf("Jammed is: %d\n", ent->machineGunJam);
+	//Com_Printf("Result of 5 and int: %d\n", ent->machineGunJam == 5);
+	//Com_Printf("\n");
 
 	if (ent->machineGunJam == 5)
 	{
@@ -1687,6 +1729,13 @@ void weapon_shotgun_fire (edict_t *ent)
 		return;
 	}
 
+	if (ent->shotgunGunJam == 5)
+	{
+		jammedMatt();
+		return;
+	}
+
+
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
 
 	VectorScale (forward, -2, ent->client->kick_origin);
@@ -1701,18 +1750,104 @@ void weapon_shotgun_fire (edict_t *ent)
 		kick *= 4;
 	}
 
-	if (deathmatch->value)
+	//mattMod shotgun
+
+
+	if (ent->shotgunGunBack == 5)
 	{
-		fire_shotgun(ent, start, forward, damage, kick, 500, 500, DEFAULT_DEATHMATCH_SHOTGUN_COUNT, MOD_SHOTGUN);
+		backwardsMatt(ent);
+		forward[0] *= -1;
+		forward[1] *= -1;
+		forward[2] *= -1;
 	}
-	else if(false)
+
+	if (ent->shotgunGunHeal == 5)
 	{
-		//shotgun mattmod shoot
+		healMatt(ent);
+		ent->health += 10;
+	}
+
+	if (ent->shotgunGunRegen == 5)
+	{
+		regenMatt();
+		ent->client->pers.inventory[ent->client->ammo_index] += 1;
+	}
+
+	if (ent->shotgunGunInstaKill == 5)
+	{
+		damage = 999;
+	}
+
+	int s1 = start[0];
+	int s2 = start[1];
+	int s3 = start[2];
+
+	if (ent->shotgunMeme2 == 1)
+	{
+		damage = rand() % 20 + 1;
+	}
+
+	Com_Printf("Shotgun damage is: %d\n", damage);
+
+	if (ent->shotgunSlug == 1)
+	{
+		fire_shotgun(ent, start, forward, damage, kick, 500, 500, DEFAULT_SHOTGUN_COUNT, MOD_SHOTGUN);
+		
+		start[0] += right[0] * 10;
+		start[1] += right[1] * 10;
+		start[2] += right[2] * 10;
+		fire_shotgun(ent, start, forward, damage, kick, 500, 500, DEFAULT_SHOTGUN_COUNT, MOD_SHOTGUN);
+
+		start[0] = s1 -= right[0] * 10;
+		start[1] = s2 -= right[1] * 10;
+		start[2] = s3 -= right[2] * 10;
+		fire_shotgun(ent, start, forward, damage, kick, 500, 500, DEFAULT_SHOTGUN_COUNT, MOD_SHOTGUN);
+		
+	}
+	else if (ent->shotgunMeme3 == 1)
+	{
+		// Up/Down start[0]
+		//start[0] += start[0] *10;
+		
+		//Com_Printf("Inside Shotgun Meme3\n");
+
+		int s1 = start[0];
+		int s2 = start[1];
+		int s3 = start[2];
+
+		for (int c = 0;c < 10;c++)
+		{
+			if (c % 2 == 0)
+			{
+				fire_shotgun(ent, start, forward, damage, kick, 500, 500, DEFAULT_SHOTGUN_COUNT, MOD_SHOTGUN);
+				start[0] = s1;
+				start[0] += right[0] * (c * 10);
+			}
+			else
+			{
+				fire_shotgun(ent, start, forward, damage, kick, 500, 500, DEFAULT_SHOTGUN_COUNT, MOD_SHOTGUN);
+				start[0] = s1;
+				start[0] -= right[0] * (c * 10);
+			}
+
+
+		}
+
+
 	}
 	else
 	{
 		fire_shotgun(ent, start, forward, damage, kick, 500, 500, DEFAULT_SHOTGUN_COUNT, MOD_SHOTGUN);
 	}
+
+	/*if (deathmatch->value)
+	{
+		fire_shotgun(ent, start, forward, damage, kick, 500, 500, DEFAULT_DEATHMATCH_SHOTGUN_COUNT, MOD_SHOTGUN);
+	}
+	else
+	{
+		fire_shotgun(ent, start, forward, damage, kick, 500, 500, DEFAULT_SHOTGUN_COUNT, MOD_SHOTGUN);
+	}*/
 		
 
 	// send muzzle flash
