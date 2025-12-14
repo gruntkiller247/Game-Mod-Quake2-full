@@ -122,6 +122,13 @@ void Killed (edict_t *targ, edict_t *inflictor, edict_t *attacker, int damage, v
 		monster_death_use (targ);
 	}
 
+	if (attacker->client)
+	{
+		//Com_Printf("Enemy has been killed by a player! Gain Points!\n");
+		inflictor->playerPoints += 10;
+		//Com_Printf("Points are now:%d", inflictor->playerPoints);
+	}
+
 	targ->die (targ, inflictor, attacker, damage, point);
 }
 

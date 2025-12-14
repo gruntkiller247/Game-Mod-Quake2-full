@@ -144,6 +144,7 @@ void PlayerNoise(edict_t *who, vec3_t where, int type)
 qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 {
 	//mattMod pickup
+	// mattmodpickup
 	//ent seems to be the weapon
 	//other seems to be the player
 
@@ -160,18 +161,21 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 
 	if (Q_stricmp(ent->item->pickup_name,"Rocket Launcher") == 0)
 	{
-		//pickup rocket
+		//mattmod pickup rocket
 		Com_Printf("Player picked up a rocket launcher!\n");
-	
-		other->rocketAOE = rand() % 2;
-		other->rocketDMG = rand() % 2;
-		other->rocketNuke = rand() % 2;
+		
+		//int test = 1+ (int)(random() * 5);
+		//Com_Printf("Test is: %d\n",test);
+
+		other->rocketAOE = 1 + (int)(random() * 2);
+		other->rocketDMG = 1 + (int)(random() * 2);
+		other->rocketNuke = 1 + (int)(random() * 2);
 		//generic
-		other->rocketRegen = rand() % 5 + 1;
-		other->rocketJam = rand() % 5 + 1;
-		other->rocketHeal = rand() % 5 + 1;
-		other->rocketInstaKill = rand() % 5 + 1;
-		other->rocketGunBack = rand() % 5 + 1;
+		other->rocketRegen = 1 + (int)(random() * 5);
+		other->rocketJam = 1 + (int)(random() * 5);
+		other->rocketHeal = 1 + (int)(random() * 5);
+		other->rocketInstaKill = 1 + (int)(random() * 5);
+		other->rocketGunBack = 1 + (int)(random() * 5);
 
 		Com_Printf("Rocket Mods:\n AOE: %d\nDMG: %d\nNuke: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta:%d\nBack: %d\n",
 			other->rocketAOE, other->rocketDMG, other->rocketNuke, other->rocketRegen,
@@ -179,13 +183,38 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 
 		
 	}
+	else if (Q_stricmp(ent->item->pickup_name,"Super Shotgun") == 0)
+	{
+		//mattmod pickup super shotgun
+		Com_Printf("Player picked up a super shotgun!\n");
+		//srand(time(NULL));
+
+		int num = (int)(random() * 2);
+
+		other->superShot1 = random() * 2;
+		//other->superShot1 = 1;
+		other->superShot2 = random() * 2;
+		other->superShot3 = random() * 2;
+
+		other->superRegen = 1 + (int)(random() * 5);
+		other->superJam = 1 + (int)(random() * 5);
+		other->superHeal = 1 + (int)(random() * 5);
+		other->superInsta = 1 + (int)(random() * 5);
+		other->superBack = 1 + (int)(random() * 5);
+
+
+		Com_Printf("Super Shotgun Mods:\n1: %d\n2: %d\n3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+			other->superShot1, other->superShot2, other->superShot3, other->superRegen,
+			other->superJam, other->superHeal, other->superInsta, other->superBack);
+
+	}
 	else if (Q_stricmp(ent->item->pickup_name,"machinegun") == 0)
 	{
-		//pickup machine
+		//mattmod pickup machine
 		Com_Printf("Player picked up a machine gun!\n");
-		srand(time(NULL));
+		//srand(time(NULL));
 
-		int num = rand() % 3;
+		int num = (int)(random() * 3);;
 		//num = 1;
 		
 
@@ -205,12 +234,12 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 			other->machineGunDump = 0;
 		}
 
-		other->machineShootRockets = rand() % 2;
-		other->machineGunRegen = rand() % 5 + 1;
-		other->machineGunJam = rand() % 5 + 1;
-		other->machineGunHeal = rand() % 5 + 1;
-		other->machineGunInstaKill = rand() % 5 + 1;
-		other->machineGunBack = rand() % 5 + 1;
+		other->machineShootRockets = (int)(random() * 2);
+		other->machineGunRegen = 1 + (int)(random() * 5);
+		other->machineGunJam = 1 + (int)(random() * 5);
+		other->machineGunHeal = 1 + (int)(random() * 5);
+		other->machineGunInstaKill = 1 + (int)(random() * 5);
+		other->machineGunBack = 1 + (int)(random() * 5);
 
 
 		Com_Printf("Machine Gun Mods:\nBolt: %d\nDump: %d\nRockets: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
@@ -222,19 +251,20 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	}
 	else if (Q_stricmp(ent->item->pickup_name, "Shotgun") == 0)
 	{
-		//pickup shotgun
+		//mattmod pickup shotgun
 		Com_Printf("Player picked up shotgun!\n");
-		srand(time(NULL));
 
-		int num = rand() % 2;
+		//srand(time(NULL));
+
+		int num = (int)(random() * 2);
 		//num = 1;
 
 		if (num == 1)
 		{
 			other->shotgunMeme2 = 1;
 		}
-		num = rand() % 2;
-		num = 2;
+		num = (int)(random() * 2);
+		//num = 2;
 
 		if (num == 1)
 		{
@@ -248,11 +278,11 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 
 		
 
-		other->shotgunGunRegen = rand() % 5 + 1;
-		other->shotgunGunJam = rand() % 5 + 1;
-		other->shotgunGunHeal = rand() % 5 + 1;
-		other->shotgunGunInstaKill = rand() % 5 + 1;
-		other->shotgunGunBack = rand() % 5 + 1;
+		other->shotgunGunRegen = (int)(random() * 5)+1;
+		other->shotgunGunJam = (int)(random() * 5)+1;
+		other->shotgunGunHeal = (int)(random() * 5) + 1;
+		other->shotgunGunInstaKill = (int)(random() * 5) + 1;
+		other->shotgunGunBack = (int)(random() * 5) + 1;
 
 		/*other->shotgunGunRegen = 5;
 		other->shotgunGunJam = rand() % 5 + 1;
@@ -265,9 +295,116 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 			other->shotgunSlug, other->shotgunMeme2, other->shotgunMeme3, other->shotgunGunRegen,
 			other->shotgunGunJam, other->shotgunGunHeal, other->shotgunGunInstaKill, other->shotgunGunBack);
 	}
+	else if (Q_stricmp(ent->item->pickup_name, "Chaingun") == 0)
+	{
+		//mattmod pickup chain
+		Com_Printf("Player picked up chaingun!\n");
+
+		int num = (int)(random() * 3);
+		other->chaingun3 = num;
+		
+		num = (int)(random() * 3);
+		other->chaingun2 = num;
+
+		num = (int)(random() * 3);
+		other->chaingun1 = num;
+
+		other->chainRegen = (int)(random() * 5) + 1;
+		other->chainJam = (int)(random() * 5) + 1;
+		other->chainHeal = (int)(random() * 5) + 1;
+		other->chainInsta= (int)(random() * 5) + 1;
+		other->chainBack = (int)(random() * 5) + 1;
+
+
+		Com_Printf("Chain Gun Mods:\nNo Spread: %d\nchain2: %d\nchain3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+			other->chaingun1, other->chaingun2, other->chaingun3, other->chainRegen,
+			other->chainJam, other->chainHeal, other->chainInsta, other->chainBack);
+
+
+	}
+	else if (Q_stricmp(ent->item->pickup_name, "weapon_bfg") == 0)
+	{
+		Com_Printf("Player picked up bfg!\n");
+
+	}
+	else if (Q_stricmp(ent->item->pickup_name, "ammo_grenades") == 0)
+	{
+		Com_Printf("Player picked up grenades!\n");
+		//mattmod pickup grenades
+		//mattmodpickupgrenades
+		Com_Printf("Player picked up chaingun!\n");
+
+		int num = (int)(random() * 3);
+		other->grenade1 = num;
+
+		num = (int)(random() * 3);
+		other->grenade2 = num;
+
+		num = (int)(random() * 3);
+		other->grenade3 = num;
+
+		other->grenadeRegen = (int)(random() * 5) + 1;
+		other->grenadeJam = (int)(random() * 5) + 1;
+		other->grenadeHeal = (int)(random() * 5) + 1;
+		other->grenadeInsta = (int)(random() * 5) + 1;
+		other->grenadeBack = (int)(random() * 5) + 1;
+
+
+		Com_Printf("Grenade Mods:\ngrenade1: %d\ngrenade2: %d\ngrenade3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+			other->grenade1, other->grenade2, other->grenade3, other->grenadeRegen,
+			other->grenadeJam, other->grenadeHeal, other->grenadeInsta, other->grenadeBack);
+	}
+	else if (Q_stricmp(ent->item->pickup_name, "weapon_grenadelauncher") == 0)
+	{
+		Com_Printf("Player picked up grenadelauncher!\n");
+	}
+	else if (Q_stricmp(ent->item->pickup_name, "hyperblaster") == 0)
+	{
+		Com_Printf("Player picked up hyperblaster!\n");
+		//mattmod pickup hyperblsater
+
+		int num = (int)(random() * 2);
+		num = 1;
+		other->hyper1 = num;
+
+		num = (int)(random() * 2);
+		//other->chaingun2 = num;
+
+		num = (int)(random() * 2);
+		//other->chaingun1 = num;
+
+		/*other->hyperRegen = (int)(random() * 5) + 1;
+		other->hyperJam = (int)(random() * 5) + 1;
+		other->hyperHeal = (int)(random() * 5) + 1;
+		other->hyperInsta = (int)(random() * 5) + 1;
+		other->hyperBack = (int)(random() * 5) + 1;*/
+
+		Com_Printf("Hyperblaster Mods:\nmeme1: %d\nmeme2: %d\nmeme3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+			other->hyper1, other->hyper2, other->hyper3, other->hyperRegen,
+			other->hyperJam, other->hyperHeal, other->hyperInsta, other->hyperBack);
+
+	}
+	else if (Q_stricmp(ent->item->pickup_name, "Railgun") == 0)
+	{
+		Com_Printf("Player picked up railgun!\n");
+
+		int num = (int)(random() * 3);
+		other->rail1 = num;
+
+		num = (int)(random() * 3);
+		other->rail2 = num;
+
+		num = (int)(random() * 3);
+		other->rail3 = num;
+
+		Com_Printf("Rail Gun Mods:\nMany Shots: %d\nHalf Range: %d\nRandomDamage: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+			other->rail1, other->rail2, other->rail3, other->rail3,
+			other->railJam, other->railHeal, other->railInsta, other->railBack);
+	}
 	else
 	{
-		Com_Printf("Player picked up some item!\n");
+
+		Com_Printf("Player picked up some item %s!\n",ent->item->pickup_name);
 	}
 
 	/*if (ent->item == FindItem("Machinegun"))
@@ -714,6 +851,10 @@ void weapon_grenade_fire (edict_t *ent, qboolean held)
 	int		speed;
 	float	radius;
 
+	//mattMod Grenade
+
+
+
 	radius = damage+40;
 	if (is_quad)
 		damage *= 4;
@@ -724,7 +865,78 @@ void weapon_grenade_fire (edict_t *ent, qboolean held)
 
 	timer = ent->client->grenade_time - level.time;
 	speed = GRENADE_MINSPEED + (GRENADE_TIMER - timer) * ((GRENADE_MAXSPEED - GRENADE_MINSPEED) / GRENADE_TIMER);
-	fire_grenade2 (ent, start, forward, damage, speed, timer, radius, held);
+
+	if (ent->grenadeJam == 5)
+	{
+		jammedMatt();
+		Com_Printf("Ummm... You jammed your grenade?");
+		fire_grenade2(ent, start, 0, damage, speed, 1, radius, held);
+	}
+
+	if (ent->grenadeHeal == 5)
+	{
+		healMatt(ent);
+		ent->health += 10;
+	}
+
+	if (ent->grenadeBack == 5)
+	{
+		backwardsMatt();
+		forward[0] *= -1;
+		forward[1] *= -1;
+		forward[2] *= -1;
+	}
+
+	if (ent->grenadeInsta == 5)
+	{
+		instaMatt();
+		damage = 999;
+	}
+
+	if (ent->grenadeRegen == 5)
+	{
+		ent->client->pers.inventory[ent->client->ammo_index]++;
+	}
+
+	//mattmod grenade
+	//mattmodgrenade
+	if (ent->grenade1 == 1)
+	{
+		//many grenades
+		fire_grenade2(ent, start, forward, damage, speed, timer, radius, held);
+
+		start[0] += right[0] * 10;
+		start[1] += right[1] * 10;
+		start[2] += right[2] * 10;
+
+		fire_grenade2(ent, start, forward, damage, speed, timer, radius, held);
+
+
+		start[0] -= right[0] * 20;
+		start[1] -= right[1] * 20;
+		start[2] -= right[2] * 20;
+		fire_grenade2(ent, start, forward, damage, speed, timer, radius, held);
+	}
+	else if (ent->grenade2 == 1)
+	{
+		//grenade random timer
+		int mTimer = (ent->client->grenade_time - level.time);
+		int num = (int)random() % (mTimer+50);
+		fire_grenade2(ent, start, forward, damage, speed, num, radius, held);
+	}
+	else if (ent->grenade3 == 1)
+	{
+		//grenade throws a rocket
+		//fire_grenade2(ent, start, forward, damage, speed, timer, radius, held);
+		int radius_damage = 120;
+		int damage_radius = 120;
+		fire_rocket(ent, start, forward, damage, 650, damage_radius, radius_damage);
+	}
+	else
+	{
+		fire_grenade2(ent, start, forward, damage, speed, timer, radius, held);
+	}
+	
 
 	if (! ( (int)dmflags->value & DF_INFINITE_AMMO ) )
 		ent->client->pers.inventory[ent->client->ammo_index]--;
@@ -928,6 +1140,7 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 	damage = 100 + (int)(random() * 20.0);
 	radius_damage = 120;
 	damage_radius = 120;
+	
 	if (is_quad)
 	{
 		damage *= 4;
@@ -1094,9 +1307,24 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 	vec3_t	start;
 	vec3_t	offset;
 	
+	if (hyper && ent->hyperJam == 5)
+	{
+		jammedMatt();
+		return;
+	}
+
+	//regen in hyperblasterfire
+	if (hyper && ent->hyperHeal == 5)
+	{
+		healMatt(ent);
+		ent->health += 10;
+	}
+
+
 
 	if (is_quad)
 		damage *= 4;
+
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
 	VectorSet(offset, 24, 8, ent->viewheight-8);
 	VectorAdd (offset, g_offset, offset);
@@ -1122,6 +1350,13 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 
 	int go = 1;
 
+	if (hyper && ent->hyperBack)
+	{
+		f[0] *= -1;
+		f[1] *= -1;
+		f[2] *= -1;
+	}
+
 	if (!hyper && ent->blasterBack == 5)
 	{
 		f[0] *= -1;
@@ -1130,11 +1365,76 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 		//Com_Printf("Blaster shooting backwards!\n");
 		backwardsMatt(ent);
 	}
+
+	//hyperblaster mods
+	if(hyper)
+	{
+		if (ent->hyper1 == 1)
+		{
+			int s1, s2, s3;
+			s1 = start[0];
+			s2 = start[1];
+			s3 = start[2];
+
+			//do something
+			// fire in a 3x3
+			fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+
+			start[0] += right[0] * 10;
+			start[1] += right[1] * 10;
+			start[2] += right[2] * 10;
+			fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+
+			start[0] -= right[0] * 20;
+			start[1] -= right[1] * 20;
+			start[2] -= right[2] * 20;
+			fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+
+			start[0] = s1;
+			start[1] = s2;
+			start[2] = s3;
+
+			vec3_t up;
+			CrossProduct(forward, right, up);
+			//1 line up
+			start[0] += up[0] * 10;
+			start[1] += up[1] * 10;
+			start[2] += up[2] * 10;
+
+
+			fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+
+			start[0] += up[0] * 10;
+			start[1] += up[1] * 10;
+			start[2] += up[2] * 10;
+			fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+
+			start[0] -= up[0] * 20;
+			start[1] -= up[1] * 20;
+			start[2] -= up[2] * 20;
+			fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+
+		}
+		else if (ent->hyper2 == 1)
+		{
+			//do something
+			//random damage
+			damage = (int)random() % 20 + 1;
+			fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+			Com_Printf("Hyperblaster Damage was randomized:%d\n",damage);
+		}
+		else
+		{
+			//fire normally
+			fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
+		}
+	}
+
 		
 	
 	fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
 
-
+	//blaster mods
 	//mattMod blaster
 	//ent->blasterBall = 1;
 	//ent->blasterLine = 0;
@@ -1242,7 +1542,7 @@ void Weapon_Blaster_Fire (edict_t *ent)
 	{
 		damage = 1;
 	}
-	else if (ent->blasterInstaKill == 1)
+	else if (ent->blasterInstaKill == 5 || ent->hyperInsta == 5)
 	{
 		damage = 999;
 		instaMatt();
@@ -1250,7 +1550,7 @@ void Weapon_Blaster_Fire (edict_t *ent)
 	else
 	{
 		damage = ent->blasterDMG;
-		Com_Printf("Blaster fired, no other mods Damage is: %d\n", damage);
+		//Com_Printf("Blaster fired, no other mods Damage is: %d\n", damage);
 	}
 	
 
@@ -1273,6 +1573,12 @@ void Weapon_HyperBlaster_Fire (edict_t *ent)
 	vec3_t	offset;
 	int		effect;
 	int		damage;
+
+	if (ent->hyperRegen == 5)
+	{
+		regenMatt();
+		ent->client->pers.inventory[ent->client->ammo_index]++;
+	}
 
 	ent->client->weapon_sound = gi.soundindex("weapons/hyprbl1a.wav");
 
@@ -1362,7 +1668,11 @@ void Machinegun_Fire (edict_t *ent)
 	int			kick = 2;
 	vec3_t		offset;
 
-
+	if (ent->machineGunJam == 5)
+	{
+		jammedMatt(ent);
+		return;
+	}
 
 
 	if (!(ent->client->buttons & BUTTON_ATTACK))
@@ -1394,11 +1704,7 @@ void Machinegun_Fire (edict_t *ent)
 	//Com_Printf("Result of 5 and int: %d\n", ent->machineGunJam == 5);
 	//Com_Printf("\n");
 
-	if (ent->machineGunJam == 5)
-	{
-		jammedMatt(ent);
-		return;
-	}
+
 
 	
 	if (ent->machineGunHeal == 5)
@@ -1589,6 +1895,13 @@ void Chaingun_Fire (edict_t *ent)
 	int			damage;
 	int			kick = 2;
 
+	//generics
+	if (ent->chainJam == 5)
+	{
+		jammedMatt();
+		return;
+	}
+
 	if (deathmatch->value)
 		damage = 6;
 	else
@@ -1661,6 +1974,12 @@ void Chaingun_Fire (edict_t *ent)
 		return;
 	}
 
+
+	//mattmod chaingun
+
+	
+
+
 	if (is_quad)
 	{
 		damage *= 4;
@@ -1673,16 +1992,95 @@ void Chaingun_Fire (edict_t *ent)
 		ent->client->kick_angles[i] = crandom() * 0.7;
 	}
 
-	for (i=0 ; i<shots ; i++)
+	if (ent->chainBack == 5)
 	{
-		// get start / end positions
-		AngleVectors (ent->client->v_angle, forward, right, up);
-		r = 7 + crandom()*4;
-		u = crandom()*4;
-		VectorSet(offset, 0, r, u + ent->viewheight-8);
-		P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
+		forward[0] *= -1;
+		forward[1] *= -1;
+		forward[2] *= -1;
+		backwardsMatt();
+	}
 
-		fire_bullet (ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_CHAINGUN);
+	if (ent->chainHeal == 5)
+	{
+		healMatt(ent);
+		ent->health += 10;
+	}
+
+	if (ent->chainInsta)
+	{
+		damage = 999;
+		instaMatt();
+	}
+
+	if (ent->chaingun1 == 2)
+	{
+		//No spread
+		for (i = 0; i < shots; i++)
+		{
+			// get start / end positions
+			AngleVectors(ent->client->v_angle, forward, right, up);
+			//r = 7 + crandom() * 4;
+			//u = crandom() * 4;
+			//VectorSet(offset, 0, r, u + ent->viewheight - 8);
+			P_ProjectSource(ent->client, ent->s.origin, offset, forward, right, start);
+
+			fire_bullet(ent, start, forward, damage, kick, 0, 0, MOD_CHAINGUN);
+		}
+	}
+	else if (ent->chaingun2 == 2)
+	{
+		//Double the bullets, massive spread
+		for (i = 0; i < shots; i++)
+		{
+			AngleVectors(ent->client->v_angle, forward, right, up);
+			r = 7 + crandom() * 240;
+			u = crandom() * 240;
+			VectorSet(offset, 0, r, u + ent->viewheight - 8);
+			P_ProjectSource(ent->client, ent->s.origin, offset, forward, right, start);
+
+			fire_bullet(ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_CHAINGUN);
+			fire_bullet(ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_CHAINGUN);
+		}
+	}
+	else if (ent->chaingun3 == 2)
+	{
+		for (i = 0; i < shots; i++)
+		{
+			// get start / end positions
+			AngleVectors(ent->client->v_angle, forward, right, up);
+			r = 7 + crandom() * 4;
+			u = crandom() * 4;
+			VectorSet(offset, 0, r, u + ent->viewheight - 8);
+			P_ProjectSource(ent->client, ent->s.origin, offset, forward, right, start);
+
+			fire_bullet(ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_CHAINGUN);
+			fire_bullet(ent, start, right, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_CHAINGUN);
+			right[0] *= -1;
+			right[1] *= -1;
+			right[2] *= -1;
+			fire_bullet(ent, start, right, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_CHAINGUN);
+		}
+	}
+	else
+	{
+		//default behavior
+		for (i = 0; i < shots; i++)
+		{
+			// get start / end positions
+			AngleVectors(ent->client->v_angle, forward, right, up);
+			r = 7 + crandom() * 4;
+			u = crandom() * 4;
+			VectorSet(offset, 0, r, u + ent->viewheight - 8);
+			P_ProjectSource(ent->client, ent->s.origin, offset, forward, right, start);
+
+			fire_bullet(ent, start, forward, damage, kick, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, MOD_CHAINGUN);
+		}
+	}
+	
+
+	if (ent->chainRegen == 5)
+	{
+		ent->client->pers.inventory[ent->client->ammo_index] += shots;
 	}
 
 	// send muzzle flash
@@ -1722,6 +2120,13 @@ void weapon_shotgun_fire (edict_t *ent)
 	vec3_t		offset;
 	int			damage = 4;
 	int			kick = 8;
+	
+
+	if (ent->shotgunGunJam == 5)
+	{
+		jammedMatt();
+		return;
+	}
 
 	if (ent->client->ps.gunframe == 9)
 	{
@@ -1729,11 +2134,7 @@ void weapon_shotgun_fire (edict_t *ent)
 		return;
 	}
 
-	if (ent->shotgunGunJam == 5)
-	{
-		jammedMatt();
-		return;
-	}
+
 
 
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
@@ -1775,6 +2176,7 @@ void weapon_shotgun_fire (edict_t *ent)
 
 	if (ent->shotgunGunInstaKill == 5)
 	{
+		instaMatt();
 		damage = 999;
 	}
 
@@ -1881,6 +2283,32 @@ void weapon_supershotgun_fire (edict_t *ent)
 	int			damage = 6;
 	int			kick = 12;
 
+	//mattMod superShotgun
+	if (ent->superJam == 5)
+	{
+		jammedMatt();
+		ent->client->ps.gunframe++;
+		return;
+	}
+
+	if (ent->superHeal == 5)
+	{
+		healMatt(ent);
+		ent->health += 10;
+	}
+
+	if (ent->superInsta == 5)
+	{
+		instaMatt();
+		damage = 999;
+	}
+
+	if (ent->superRegen == 5)
+	{
+		regenMatt();
+		ent->client->pers.inventory[ent->client->ammo_index] += 1;
+	}
+
 	AngleVectors (ent->client->v_angle, forward, right, NULL);
 
 	VectorScale (forward, -2, ent->client->kick_origin);
@@ -1899,10 +2327,60 @@ void weapon_supershotgun_fire (edict_t *ent)
 	v[YAW]   = ent->client->v_angle[YAW] - 5;
 	v[ROLL]  = ent->client->v_angle[ROLL];
 	AngleVectors (v, forward, NULL, NULL);
-	fire_shotgun (ent, start, forward, damage, kick, DEFAULT_SHOTGUN_HSPREAD, DEFAULT_SHOTGUN_VSPREAD, DEFAULT_SSHOTGUN_COUNT/2, MOD_SSHOTGUN);
+	//fire_shotgun (ent, start, forward, damage, kick, DEFAULT_SHOTGUN_HSPREAD, DEFAULT_SHOTGUN_VSPREAD, DEFAULT_SSHOTGUN_COUNT/2, MOD_SSHOTGUN);
 	v[YAW]   = ent->client->v_angle[YAW] + 5;
 	AngleVectors (v, forward, NULL, NULL);
-	fire_shotgun (ent, start, forward, damage, kick, DEFAULT_SHOTGUN_HSPREAD, DEFAULT_SHOTGUN_VSPREAD, DEFAULT_SSHOTGUN_COUNT/2, MOD_SSHOTGUN);
+	//fire_shotgun (ent, start, forward, damage, kick, DEFAULT_SHOTGUN_HSPREAD, DEFAULT_SHOTGUN_VSPREAD, DEFAULT_SSHOTGUN_COUNT/2, MOD_SSHOTGUN);
+
+	//mattmod
+	if (ent->superShot1 == 1)
+	{
+		float	timer;
+		int		speed;
+		float	radius;
+
+		radius = damage + 40;
+		timer = ent->client->grenade_time - level.time;
+		speed = GRENADE_MINSPEED + (GRENADE_TIMER - timer) * ((GRENADE_MAXSPEED - GRENADE_MINSPEED) / GRENADE_TIMER);
+		fire_grenade2(ent, start, forward, damage, speed, timer, radius, false);
+
+		start[0] *= -1;
+		start[1] *= -1;
+		start[2] *= -1;
+
+		fire_grenade2(ent, start, forward, damage, speed, timer, radius, false);
+	}
+	else if (ent->superShot2 == 1)
+	{
+		fire_shotgun(ent, start, forward, damage, kick, DEFAULT_SHOTGUN_HSPREAD, DEFAULT_SHOTGUN_VSPREAD, DEFAULT_SSHOTGUN_COUNT / 2, MOD_SSHOTGUN);
+
+		start[0] += right[0] * 10;
+		start[1] += right[1] * 10;
+		start[2] += right[2] * 10;
+
+		start[0] -= right[0] * 20;
+		start[1] -= right[1] * 20;
+		start[2] -= right[2] * 20;
+	}
+	else if (ent->superShot3)
+	{
+		fire_rocket(ent, start, forward, 0, 650, 0, 0);
+		fire_shotgun(ent, start, forward, damage, kick, DEFAULT_SHOTGUN_HSPREAD, DEFAULT_SHOTGUN_VSPREAD, DEFAULT_SSHOTGUN_COUNT / 2, MOD_SSHOTGUN);
+	}
+	else
+	{
+		v[PITCH] = ent->client->v_angle[PITCH];
+		v[YAW] = ent->client->v_angle[YAW] - 5;
+		v[ROLL] = ent->client->v_angle[ROLL];
+		AngleVectors(v, forward, NULL, NULL);
+		fire_shotgun (ent, start, forward, damage, kick, DEFAULT_SHOTGUN_HSPREAD, DEFAULT_SHOTGUN_VSPREAD, DEFAULT_SSHOTGUN_COUNT/2, MOD_SSHOTGUN);
+		v[YAW] = ent->client->v_angle[YAW] + 5;
+		AngleVectors(v, forward, NULL, NULL);
+		fire_shotgun (ent, start, forward, damage, kick, DEFAULT_SHOTGUN_HSPREAD, DEFAULT_SHOTGUN_VSPREAD, DEFAULT_SSHOTGUN_COUNT/2, MOD_SSHOTGUN);
+	}
+	
+
+
 
 	// send muzzle flash
 	gi.WriteByte (svc_muzzleflash);
@@ -1943,15 +2421,49 @@ void weapon_railgun_fire (edict_t *ent)
 	int			damage;
 	int			kick;
 
+	//mattmod railgun
+	//mattmodrailgun
+
+	if (ent->railJam == 5)
+	{
+		jammedMatt();
+		return;
+	}
+
 	if (deathmatch->value)
 	{	// normal damage is too extreme in dm
 		damage = 100;
+		kick = 200;
+	}
+	else if (ent->railInsta == 5)
+	{
+		damage = 999;
 		kick = 200;
 	}
 	else
 	{
 		damage = 150;
 		kick = 250;
+	}
+
+	if (ent->railRegen == 5)
+	{
+		ent->client->pers.inventory[ent->client->ammo_index]++;
+		regenMatt();
+	}
+
+	if (ent->railHeal == 5)
+	{
+		healMatt(ent);
+		ent->health += 10;
+	}
+
+	if (ent->railBack == 5)
+	{
+		backwardsMatt();
+		forward[0] *= -1;
+		forward[1] *= -1;
+		forward[2] *= -1;
 	}
 
 	if (is_quad)
@@ -1967,7 +2479,29 @@ void weapon_railgun_fire (edict_t *ent)
 
 	VectorSet(offset, 0, 7,  ent->viewheight-8);
 	P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
-	fire_rail (ent, start, forward, damage, kick);
+
+	if (ent->rail1 == 1)
+	{
+		fire_rail(ent, start, forward, damage, kick);
+		fire_rail(ent, start, right, damage, kick);
+		right[0] *= -1;
+		right[1] *= -1;
+		right[2] *= -1;
+		fire_rail(ent, start, right, damage, kick);
+
+	}
+	else if (ent->rail2 == 1)
+	{
+		//halfRange
+		fire_railMatt(ent, start, forward, damage, kick);
+	}
+	else if (ent->rail3 == 1)
+	{
+		damage = random() * 100 + 10;
+		fire_rail(ent, start, forward, damage, kick);
+	}
+	else
+		fire_rail (ent, start, forward, damage, kick);
 
 	// send muzzle flash
 	gi.WriteByte (svc_muzzleflash);

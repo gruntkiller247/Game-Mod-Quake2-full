@@ -734,6 +734,9 @@ void fire_rocket (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed
 void fire_rail (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int kick);
 void fire_bfg (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed, float damage_radius);
 
+//mattMod
+void fire_railMatt(edict_t* self, vec3_t start, vec3_t aimdir, int damage, int kick);
+
 //
 // g_ptrail.c
 //
@@ -1117,7 +1120,11 @@ struct edict_s
 	monsterinfo_t	monsterinfo;
 
 	//mattMod
+	// playerPoints
+	int playerPoints;
+
 	//rocket mods
+	int		rocketModded;
 	int		  rocketAOE;
 	int		  rocketDMG;
 	int		  rocketNuke;
@@ -1140,6 +1147,7 @@ struct edict_s
 	int blasterBack; //Y
 
 	//machine gun mods
+	int machineModded;
 	int machineGunBolt;
 	int machineGunDump;
 	int machineShootRockets;
@@ -1151,6 +1159,7 @@ struct edict_s
 	int machineGunBack;
 
 	//normal shotgun mods
+	int shotgunModded;
 	int shotgunSlug;
 	int shotgunMeme2;
 	int shotgunMeme3;
@@ -1160,6 +1169,72 @@ struct edict_s
 	int shotgunGunHeal;
 	int shotgunGunInstaKill;
 	int shotgunGunBack;
+
+
+
+	//super shotgun mods
+	int superModded;
+	int superShot1;
+	int superShot2;
+	int superShot3;
+	//generic
+	int superRegen;
+	int superJam;
+	int superHeal;
+	int superInsta;
+	int superBack;
+
+	//chaingun mods
+	int chaingunModded;
+	int chaingun1;
+	int chaingun2;
+	int chaingun3;
+
+	int chainRegen;
+	int chainJam;
+	int chainHeal;
+	int chainInsta;
+	int chainBack;
+
+	//railgun mods
+	int railgunModded;
+	int rail1;
+	int rail2;
+	int rail3;
+
+	int railRegen;
+	int railJam;
+	int railHeal;
+	int railInsta;
+	int railBack;
+
+	//hyperblaster mods
+	int hyperModded;
+	int hyper1;
+	int hyper2;
+	int hyper3;
+
+	int hyperRegen;
+	int hyperJam;
+	int hyperHeal;
+	int hyperInsta;
+	int hyperBack;
+
+	//grenade mods
+	int grenadeModded;
+	int grenade1;
+	int grenade2;
+	int grenade3;
+
+	int grenadeRegen;
+	int grenadeJam;
+	int grenadeHeal;
+	int grenadeInsta;
+	int grenadeBack;
+
+
+
+
 
 	//generic
 	//Heal on shot, insta kill, regen ammo, jammed weapon (0 damage/does not shoot), weapon shoots backwards

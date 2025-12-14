@@ -20,6 +20,81 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "g_local.h"
 #include "m_player.h"
 
+//mattMod
+void buyWeapon(edict_t* ent)
+{
+	if (ent->playerPoints <= 49)
+	{
+		Com_Printf("Not enough points to buy a weapon!\n");
+		return;
+	}
+	else
+	{
+		ent->playerPoints -= 50;
+	}
+
+	char* name; 
+	edict_t* w = G_Spawn();
+
+	VectorCopy(ent->s.origin, w->s.origin);
+	int num = random() * 11;
+
+	if (num == 0)
+	{
+		name = "weapon_shotgun";
+	}
+	else if (num == 1)
+	{
+		name = "weapon_supershotgun";
+	}
+	else if (num == 2)
+	{
+		name = "weapon_machinegun";
+	}
+	else if (num == 3)
+	{
+		name = "weapon_chaingun";
+	}
+	else if (num == 4)
+	{
+		name = "weapon_grenadelauncher";
+	}
+	else if (num == 5)
+	{
+		name = "weapon_rocketlauncher";
+	}
+	else if (num == 6)
+	{
+		name = "weapon_hyperblaster";
+	}
+	else if (num == 7)
+	{
+		name = "weapon_railgun";
+	}
+	else
+	{
+		name = "weapon_bfg";
+	}
+
+	w->classname = name;
+	ED_CallSpawn(w);
+	Com_Printf("Player bought a %s\n!",name);
+}
+
+void givePoints(edict_t* ent)
+{
+	char* name = gi.argv(1);
+	if (!name || name[0] == 0)
+	{
+		//Com_Printf("Player gave no point value!\n");
+		//ent->playerPoints += 50;
+	}
+	else
+		ent->playerPoints += atoi(name);
+	
+	Com_Printf("Current Player's Points:%d\n",ent->playerPoints);
+}
+
 
 //mattMod
 void spawnWeapon(edict_t* ent)
@@ -31,7 +106,7 @@ void spawnWeapon(edict_t* ent)
 		return;
 	}
 
-	char* name = gi.argv(1);
+	char* name = gi.argv(1); //spawn weaponName
 	edict_t* w = G_Spawn();
 	VectorCopy(ent->s.origin, w->s.origin);
 	//w->s.origin[2] += 16;
@@ -40,6 +115,12 @@ void spawnWeapon(edict_t* ent)
 	if (Q_stricmp(name, "shotgun") == 0)
 	{
 		w->classname = "weapon_shotgun";
+
+		/*if (Q_stricmp(gi.argv(2), "jammed") == 0)
+		{
+			ent->shotgunGunJam = 5;
+			Com_Printf("Jammed Shotgun!\n");
+		}*/
 	}
 	else if (Q_stricmp(name, "supershotgun") == 0)
 	{
@@ -73,6 +154,10 @@ void spawnWeapon(edict_t* ent)
 	{
 		w->classname = "weapon_bfg";
 	}
+	else if (Q_stricmp(name,"grenades") == 0)
+	{
+		w->classname = "ammo_grenades";
+	}
 	else
 	{
 		Com_Printf("mattMod spawnWeapon: Not a weapon!\n");
@@ -81,6 +166,8 @@ void spawnWeapon(edict_t* ent)
 
 	//w->classname = name;
 	
+
+
 	ED_CallSpawn(w);
 
 	
@@ -977,7 +1064,7 @@ void ClientCommand (edict_t *ent)
 	if (!ent->client)
 		return;		// not fully in game yet
 
-	cmd = gi.argv(0);
+	cmd = gi.argv(0); // fuck you, piece of shit  [fuck][you]...
 
 	if (Q_stricmp (cmd, "players") == 0)
 	{
@@ -1008,52 +1095,56 @@ void ClientCommand (edict_t *ent)
 	if (level.intermissiontime)
 		return;
 
-	if (Q_stricmp (cmd, "use") == 0)
-		Cmd_Use_f (ent);
-	else if (Q_stricmp (cmd, "drop") == 0)
-		Cmd_Drop_f (ent);
-	else if (Q_stricmp (cmd, "give") == 0)
-		Cmd_Give_f (ent);
-	else if (Q_stricmp (cmd, "god") == 0)
-		Cmd_God_f (ent);
-	else if (Q_stricmp (cmd, "notarget") == 0)
-		Cmd_Notarget_f (ent);
-	else if (Q_stricmp (cmd, "noclip") == 0)
-		Cmd_Noclip_f (ent);
-	else if (Q_stricmp (cmd, "inven") == 0)
-		Cmd_Inven_f (ent);
-	else if (Q_stricmp (cmd, "invnext") == 0)
-		SelectNextItem (ent, -1);
-	else if (Q_stricmp (cmd, "invprev") == 0)
-		SelectPrevItem (ent, -1);
-	else if (Q_stricmp (cmd, "invnextw") == 0)
-		SelectNextItem (ent, IT_WEAPON);
-	else if (Q_stricmp (cmd, "invprevw") == 0)
-		SelectPrevItem (ent, IT_WEAPON);
-	else if (Q_stricmp (cmd, "invnextp") == 0)
-		SelectNextItem (ent, IT_POWERUP);
-	else if (Q_stricmp (cmd, "invprevp") == 0)
-		SelectPrevItem (ent, IT_POWERUP);
-	else if (Q_stricmp (cmd, "invuse") == 0)
-		Cmd_InvUse_f (ent);
-	else if (Q_stricmp (cmd, "invdrop") == 0)
-		Cmd_InvDrop_f (ent);
-	else if (Q_stricmp (cmd, "weapprev") == 0)
-		Cmd_WeapPrev_f (ent);
-	else if (Q_stricmp (cmd, "weapnext") == 0)
-		Cmd_WeapNext_f (ent);
-	else if (Q_stricmp (cmd, "weaplast") == 0)
-		Cmd_WeapLast_f (ent);
-	else if (Q_stricmp (cmd, "kill") == 0)
-		Cmd_Kill_f (ent);
-	else if (Q_stricmp (cmd, "putaway") == 0)
-		Cmd_PutAway_f (ent);
-	else if (Q_stricmp (cmd, "wave") == 0)
-		Cmd_Wave_f (ent);
+	if (Q_stricmp(cmd, "use") == 0)
+		Cmd_Use_f(ent);
+	else if (Q_stricmp(cmd, "drop") == 0)
+		Cmd_Drop_f(ent);
+	else if (Q_stricmp(cmd, "give") == 0)
+		Cmd_Give_f(ent);
+	else if (Q_stricmp(cmd, "god") == 0)
+		Cmd_God_f(ent);
+	else if (Q_stricmp(cmd, "notarget") == 0)
+		Cmd_Notarget_f(ent);
+	else if (Q_stricmp(cmd, "noclip") == 0)
+		Cmd_Noclip_f(ent);
+	else if (Q_stricmp(cmd, "inven") == 0)
+		Cmd_Inven_f(ent);
+	else if (Q_stricmp(cmd, "invnext") == 0)
+		SelectNextItem(ent, -1);
+	else if (Q_stricmp(cmd, "invprev") == 0)
+		SelectPrevItem(ent, -1);
+	else if (Q_stricmp(cmd, "invnextw") == 0)
+		SelectNextItem(ent, IT_WEAPON);
+	else if (Q_stricmp(cmd, "invprevw") == 0)
+		SelectPrevItem(ent, IT_WEAPON);
+	else if (Q_stricmp(cmd, "invnextp") == 0)
+		SelectNextItem(ent, IT_POWERUP);
+	else if (Q_stricmp(cmd, "invprevp") == 0)
+		SelectPrevItem(ent, IT_POWERUP);
+	else if (Q_stricmp(cmd, "invuse") == 0)
+		Cmd_InvUse_f(ent);
+	else if (Q_stricmp(cmd, "invdrop") == 0)
+		Cmd_InvDrop_f(ent);
+	else if (Q_stricmp(cmd, "weapprev") == 0)
+		Cmd_WeapPrev_f(ent);
+	else if (Q_stricmp(cmd, "weapnext") == 0)
+		Cmd_WeapNext_f(ent);
+	else if (Q_stricmp(cmd, "weaplast") == 0)
+		Cmd_WeapLast_f(ent);
+	else if (Q_stricmp(cmd, "kill") == 0)
+		Cmd_Kill_f(ent);
+	else if (Q_stricmp(cmd, "putaway") == 0)
+		Cmd_PutAway_f(ent);
+	else if (Q_stricmp(cmd, "wave") == 0)
+		Cmd_Wave_f(ent);
 	else if (Q_stricmp(cmd, "playerlist") == 0)
 		Cmd_PlayerList_f(ent);
 	else if (Q_stricmp(cmd, "spawn") == 0) //mattMod
 		spawnWeapon(ent);
+	else if (Q_stricmp(cmd, "points") == 0)
+		givePoints(ent);
+	else if (Q_stricmp(cmd, "buy") == 0)
+		buyWeapon(ent);
 	else	// anything that doesn't match a command will be a chat
 		Cmd_Say_f (ent, false, true);
 }

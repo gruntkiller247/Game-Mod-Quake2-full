@@ -504,6 +504,12 @@ void player_die (edict_t *self, edict_t *inflictor, edict_t *attacker, int damag
 {
 	int		n;
 
+	if (inflictor->client)
+	{
+		inflictor->playerPoints += 10;
+		Com_Printf("You killed a player! Here are some points!\n\n");
+	}
+
 	VectorClear (self->avelocity);
 
 	self->takedamage = DAMAGE_YES;
@@ -1298,7 +1304,7 @@ to be placed into the game.  This will happen every level load.
 void ClientBegin (edict_t *ent)
 {
 	//mattMod
-	
+	ent->playerPoints = 0;
 
 	//rocket mods
 	ent->rocketAOE = 0;
@@ -1311,16 +1317,18 @@ void ClientBegin (edict_t *ent)
 	ent->rocketInstaKill = 0;
 	ent->rocketGunBack = 0;
 
-	srand(time(NULL));
+	//srand(time(NULL));
+
 
 	//blaster mods - only one to be randomized Here as it can't be picked up
-	ent->blasterBall = rand() % 2;
-	ent->blasterLine = rand() % 2;
-	ent->blasterDMG = rand() % 20 + 1;
+	//1 + (int)(random() * 2);
+	ent->blasterBall = 1 + (int)(random() * 2);
+	ent->blasterLine = 1 + (int)(random() * 2);
+	ent->blasterDMG = 1 + (int)(random() * 20);
 	//generic - no jamming nor regen
-	ent->blasterInstaKill = rand() % 5 + 1;
-	ent->blasterHeal = rand() % 5 + 1;
-	ent->blasterBack = rand() % 5 + 1;
+	ent->blasterInstaKill = 1 + (int)(random() * 5);
+	ent->blasterHeal = 1 + (int)(random() * 5);
+	ent->blasterBack = 1 + (int)(random() * 5);
 	
 
 	//machineGun mods
@@ -1333,9 +1341,10 @@ void ClientBegin (edict_t *ent)
 	ent->machineGunInstaKill = 0;
 	ent->machineGunJam = 0;
 	ent->machineGunBack = 0;
-	Com_Printf("\nInside player spawn class\n");
+	//Com_Printf("\nInside player spawn class\n");
 
 	//shotgun mods
+	ent->shotgunModded = 0;
 	ent->shotgunSlug = 0;
 	ent->shotgunMeme2 = 0;
 	ent->shotgunMeme3 = 0;
@@ -1345,6 +1354,42 @@ void ClientBegin (edict_t *ent)
 	ent->shotgunGunHeal = 0;
 	ent->shotgunGunInstaKill = 0;
 	ent->shotgunGunBack = 0;
+
+	//super shotgun mods
+	ent->superModded = 0;
+	ent->superShot1 = 0;
+	ent-> superShot2 = 0;
+	ent-> superShot3 =0;
+	//generic
+	ent-> superRegen =0;
+	ent->superJam =0;
+	ent->superHeal =0;
+	ent->superInsta =0;
+	ent-> superBack =0;
+
+	//chaingun mods
+	ent->chaingunModded = 0;
+	ent->chaingun1 = 0;
+	ent->chaingun2 = 0;
+	ent->chaingun3 = 0;
+	//generic
+	ent->chainRegen = 0;
+	ent->chainJam = 0;
+	ent->chainHeal = 0;
+	ent->chainInsta = 0;
+	ent->chainBack = 0;
+
+	//grenade mods
+	ent->grenadeModded = 0;
+	ent->grenade1 = 0;
+	ent->grenade2 = 0;
+	ent->grenade3 = 0;
+	//generic
+	ent->grenadeRegen = 0;
+	ent->grenadeJam = 0;
+	ent->grenadeHeal = 0;
+	ent->grenadeInsta = 0;
+	ent->grenadeBack = 0;
 
 
 

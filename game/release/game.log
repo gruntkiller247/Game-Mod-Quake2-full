@@ -1,22 +1,31 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(524,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   p_weapon.c
 C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(27,31): warning C4100: 'ent': unreferenced parameter
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(152,3): warning C4033: 'Pickup_Weapon' must return a value
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1454,10): warning C4189: 'f': local variable is initialized but not referenced
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1814,7): warning C4456: declaration of 's1' hides previous local declaration
-      C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1781,6):
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(153,3): warning C4033: 'Pickup_Weapon' must return a value
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(192,7): warning C4189: 'num': local variable is initialized but not referenced
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1374,8): warning C4456: declaration of 's1' hides previous local declaration
+      C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1347,8):
       see declaration of 's1'
   
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1815,7): warning C4456: declaration of 's2' hides previous local declaration
-      C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1782,6):
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1374,12): warning C4456: declaration of 's2' hides previous local declaration
+      C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1348,8):
       see declaration of 's2'
   
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1816,7): warning C4456: declaration of 's3' hides previous local declaration
-      C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1783,6):
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1760,10): warning C4189: 'f': local variable is initialized but not referenced
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(2216,7): warning C4456: declaration of 's1' hides previous local declaration
+      C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(2183,6):
+      see declaration of 's1'
+  
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(2217,7): warning C4456: declaration of 's2' hides previous local declaration
+      C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(2184,6):
+      see declaration of 's2'
+  
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(2218,7): warning C4456: declaration of 's3' hides previous local declaration
+      C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(2185,6):
       see declaration of 's3'
   
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1815,7): warning C4189: 's2': local variable is initialized but not referenced
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(1816,7): warning C4189: 's3': local variable is initialized but not referenced
-C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(323,1): warning C4715: 'Pickup_Weapon': not all control paths return a value
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(2217,7): warning C4189: 's2': local variable is initialized but not referenced
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(2218,7): warning C4189: 's3': local variable is initialized but not referenced
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\game\p_weapon.c(460,1): warning C4715: 'Pickup_Weapon': not all control paths return a value
      Creating library .\..\release\gamex86.lib and object .\..\release\gamex86.exp
   game.vcxproj -> C:\quake2\mattMod\gamex86.dll
