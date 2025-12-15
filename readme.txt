@@ -1,29 +1,23 @@
+Hello! This mod grants each weapon 3 unique mods and 5 generic mods for the player to use and or suffer with.
+Each weapon has some amalgamation of beneficial and or negative changes made to it.
 
-This is the complete source code for Quake 2, version 3.19, buildable with
-visual C++ 6.0.  The linux version should be buildable, but we haven't
-tested it for the release.
+The generic mods are:
+  Jammed: The weapon is unusable and will not fire.
+  Heal: The weapon heals the player for 10 hp when fired. 
+  Regen: The weapon regens all ammo used when firing.
+  Insta Kill: The weapon will one shot anything.
+  Backwards: The weapon will shoot backwards.
 
-The code is all licensed under the terms of the GPL (gnu public license).  
-You should read the entire license, but the gist of it is that you can do 
-anything you want with the code, including sell your new version.  The catch 
-is that if you distribute new binary versions, you are required to make the 
-entire source code available for free to everyone.
+Players are giving the ablitty to drop weapons by pressing: F
+Players earn points when killing monsters and or other players that they can spend to purchase a random weapon by pressing: V
+Players can see their balance by pressing: X  (If server cheats are enabled, the same command can be further modified to grant points)
+Players can see the in game help menu by pressing: U
 
-The primary intent of this release is for entertainment and educational 
-purposes, but the GPL does allow commercial exploitation if you obey the 
-full license.  If you want to do something commercial and you just can't bear 
-to have your source changes released, we could still negotiate a separate 
-license agreement (for $$$), but I would encourage you to just live with the 
-GPL.
+For balance, the blaster is both undropable and unable to get all negative mods.
 
-All of the Q2 data files remain copyrighted and licensed under the 
-original terms, so you cannot redistribute data from the original game, but if 
-you do a true total conversion, you can create a standalone game based on 
-this code.
-
-Thanks to Robert Duffy for doing the grunt work of building this release.
-
-John Carmack
-Id Software
-
-
+To install this mod:
+ Download the mod
+ Place the mod in the Quake 2 source folder next to the folder basesq2
+ Extract the mod
+ Once inside of quake 2, open the console and type game mattMod to enable the mod
+   If you want to create a shortcut to open the mod on launch, create a shortcut to your quake 2 executable and within the launch properties/target line write "+set game mattMod"
