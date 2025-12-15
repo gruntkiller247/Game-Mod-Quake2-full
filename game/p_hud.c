@@ -290,6 +290,51 @@ void Cmd_Score_f (edict_t *ent)
 	ent->client->showscores = true;
 	DeathmatchScoreboard (ent);
 }
+//mattMod
+
+void drawWeaponMatt(edict_t* ent)
+{
+	char	string[2048];
+	char* sk;
+	sk = "You have bought a: \n";
+	//strcat(sk, ent->client->pers.weapon->pickup_name); This crashes the game, should be fixable
+
+	Com_sprintf(string, sizeof(string),
+		"xv 32 yv 8 picn inventory "
+		"xv 60 yv 48 string2 \"%s\"",
+		sk
+	);
+
+
+	gi.WriteByte (svc_layout);
+	gi.WriteString (string);
+	gi.unicast (ent, true);
+}
+
+void helpWeaponMatt(edict_t* ent)
+{
+	ent->client->showinventory = false;
+	ent->client->showscores = false;
+	ent->client->showhelp = false;
+	ent->client->showMatt = false;
+
+
+	if (ent->client->showWeaponMatt)
+	{
+		ent->client->showWeaponMatt = false;
+		ent->client->showhelp = false;
+		return;
+	}
+	//Com_Printf("Showmatt is false!\n");
+
+
+	
+	ent->client->showWeaponMatt = true;
+	ent->client->showhelp = true;
+
+	drawWeaponMatt(ent);
+}
+
 
 void drawMatt(edict_t* ent)
 {
@@ -302,7 +347,7 @@ void drawMatt(edict_t* ent)
 
 	// send the layout
 	Com_sprintf(string, sizeof(string),
-		"xv 32 yv 8 picn help "			// background
+		"xv 32 yv 8 picn inventory "			// background
 		"xv 202 yv 12 string2 \"%s\" "		// skill
 		"xv 0 yv 24 cstring2 \"%s\" "		// level name
 		"xv 0 yv 54 cstring2 \"%s\" "		// help 1

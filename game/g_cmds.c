@@ -105,14 +105,13 @@ void buyWeapon(edict_t* ent)
 		Com_Printf("Not enough points to buy a weapon!\n");
 		return;
 	}
-	else
-	{
-		ent->playerPoints -= 50;
-		Com_Printf("|This is the menu to buy a weapon!|\n"
-			"|Test!|");
-	}
 
-	char* name; 
+	ent->playerPoints -= 50;
+
+	
+	
+
+	char *name; 
 	edict_t* w = G_Spawn();
 
 	VectorCopy(ent->s.origin, w->s.origin);
@@ -158,6 +157,8 @@ void buyWeapon(edict_t* ent)
 	w->classname = name;
 	ED_CallSpawn(w);
 	Com_Printf("Player bought a %s\n!",name);
+
+	helpWeaponMatt(ent);
 }
 
 void givePoints(edict_t* ent)

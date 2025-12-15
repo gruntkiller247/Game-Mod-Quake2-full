@@ -1304,7 +1304,7 @@ to be placed into the game.  This will happen every level load.
 void ClientBegin (edict_t *ent)
 {
 	//mattMod
-	ent->playerPoints = 0;
+	ent->playerPoints = 100;
 
 	//rocket mods
 	ent->rocketAOE = 0;
@@ -1416,6 +1416,7 @@ void ClientBegin (edict_t *ent)
 	ent->BFGBack = 0;
 
 	ent->client->showMatt = false;
+	ent->client->showWeaponMatt = false;
 
 	int		i;
 
@@ -1862,6 +1863,12 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 		other = g_edicts + i;
 		if (other->inuse && other->client->chase_target == ent)
 			UpdateChaseCam(other);
+	}
+
+	//mattMod
+	if (ent->client->showWeaponMatt && ent->client->showWeaponMattEnd >= level.time + 10.0)
+	{
+		ent->client->showWeaponMatt = false;
 	}
 }
 

@@ -736,8 +736,12 @@ void fire_bfg (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed, f
 
 //mattMod
 void fire_railMatt(edict_t* self, vec3_t start, vec3_t aimdir, int damage, int kick);
+
 void helpMatt(edict_t* ent);
 void drawMatt(edict_t* ent);
+
+void helpWeaponMatt(edict_t* ent);
+void drawWeaponMatt(edict_t* ent);
 
 //
 // g_ptrail.c
@@ -969,6 +973,8 @@ struct gclient_s
 
 	//mattMod
 	qboolean showMatt;
+	qboolean showWeaponMatt;
+	int showWeaponMattEnd;
 };
 
 
