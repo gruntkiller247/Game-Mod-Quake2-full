@@ -737,6 +737,7 @@ void fire_bfg (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed, f
 //mattMod
 void fire_railMatt(edict_t* self, vec3_t start, vec3_t aimdir, int damage, int kick);
 
+
 //
 // g_ptrail.c
 //
@@ -1231,6 +1232,30 @@ struct edict_s
 	int grenadeHeal;
 	int grenadeInsta;
 	int grenadeBack;
+
+	//grenadelauncer mods
+	int launcerModded;
+	int launcer1;
+	int launcer2;
+	int launcer3;
+
+	int launcerRegen;
+	int launcerJam;
+	int launcerHeal;
+	int launcerInsta;
+	int launcerBack;
+
+	//BFG mods
+	int BFGModded;
+	int BFG1;
+	int BFG2;
+	int BFG3;
+
+	int BFGRegen;
+	int BFGJam;
+	int BFGHeal;
+	int BFGInsta;
+	int BFGBack;
 
 
 

@@ -162,24 +162,29 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	if (Q_stricmp(ent->item->pickup_name,"Rocket Launcher") == 0)
 	{
 		//mattmod pickup rocket
+		
 		Com_Printf("Player picked up a rocket launcher!\n");
 		
-		//int test = 1+ (int)(random() * 5);
-		//Com_Printf("Test is: %d\n",test);
+		if (other->rocketModded == 0)
+		{
+			//int test = 1+ (int)(random() * 5);
+			//Com_Printf("Test is: %d\n",test);
 
-		other->rocketAOE = 1 + (int)(random() * 2);
-		other->rocketDMG = 1 + (int)(random() * 2);
-		other->rocketNuke = 1 + (int)(random() * 2);
-		//generic
-		other->rocketRegen = 1 + (int)(random() * 5);
-		other->rocketJam = 1 + (int)(random() * 5);
-		other->rocketHeal = 1 + (int)(random() * 5);
-		other->rocketInstaKill = 1 + (int)(random() * 5);
-		other->rocketGunBack = 1 + (int)(random() * 5);
+			other->rocketAOE = 1 + (int)(random() * 2);
+			other->rocketDMG = 1 + (int)(random() * 2);
+			other->rocketNuke = 1 + (int)(random() * 2);
+			//generic
+			other->rocketRegen = 1 + (int)(random() * 5);
+			other->rocketJam = 1 + (int)(random() * 5);
+			other->rocketHeal = 1 + (int)(random() * 5);
+			other->rocketInstaKill = 1 + (int)(random() * 5);
+			other->rocketGunBack = 1 + (int)(random() * 5);
+			other->rocketModded = 1;
 
-		Com_Printf("Rocket Mods:\n AOE: %d\nDMG: %d\nNuke: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta:%d\nBack: %d\n",
-			other->rocketAOE, other->rocketDMG, other->rocketNuke, other->rocketRegen,
-			other->rocketJam, other->rocketHeal, other->rocketInstaKill, other->rocketGunBack);
+			Com_Printf("Rocket Mods:\n AOE: %d\nDMG: %d\nNuke: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta:%d\nBack: %d\n",
+				other->rocketAOE, other->rocketDMG, other->rocketNuke, other->rocketRegen,
+				other->rocketJam, other->rocketHeal, other->rocketInstaKill, other->rocketGunBack);
+		}
 
 		
 	}
@@ -188,63 +193,73 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 		//mattmod pickup super shotgun
 		Com_Printf("Player picked up a super shotgun!\n");
 		//srand(time(NULL));
+		
+		if (other->superModded == 0)
+		{
+			int num = (int)(random() * 2);
 
-		int num = (int)(random() * 2);
+			other->superShot1 = random() * 2;
+			//other->superShot1 = 1;
+			other->superShot2 = random() * 2;
+			other->superShot3 = random() * 2;
 
-		other->superShot1 = random() * 2;
-		//other->superShot1 = 1;
-		other->superShot2 = random() * 2;
-		other->superShot3 = random() * 2;
+			other->superRegen = 1 + (int)(random() * 5);
+			other->superJam = 1 + (int)(random() * 5);
+			other->superHeal = 1 + (int)(random() * 5);
+			other->superInsta = 1 + (int)(random() * 5);
+			other->superBack = 1 + (int)(random() * 5);
+			other->superModded = 1;
 
-		other->superRegen = 1 + (int)(random() * 5);
-		other->superJam = 1 + (int)(random() * 5);
-		other->superHeal = 1 + (int)(random() * 5);
-		other->superInsta = 1 + (int)(random() * 5);
-		other->superBack = 1 + (int)(random() * 5);
+			Com_Printf("Super Shotgun Mods:\n1: %d\n2: %d\n3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+				other->superShot1, other->superShot2, other->superShot3, other->superRegen,
+				other->superJam, other->superHeal, other->superInsta, other->superBack);
+		}
 
 
-		Com_Printf("Super Shotgun Mods:\n1: %d\n2: %d\n3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
-			other->superShot1, other->superShot2, other->superShot3, other->superRegen,
-			other->superJam, other->superHeal, other->superInsta, other->superBack);
 
 	}
 	else if (Q_stricmp(ent->item->pickup_name,"machinegun") == 0)
 	{
 		//mattmod pickup machine
 		Com_Printf("Player picked up a machine gun!\n");
-		//srand(time(NULL));
-
-		int num = (int)(random() * 3);;
-		//num = 1;
 		
-
-		if (num == 0)
+		if (other->machineModded == 0)
 		{
-			other->machineGunBolt = 1;
-			other->machineGunDump = 0;
-		}
-		else if (num == 1)
-		{
-			other->machineGunBolt = 0;
-			other->machineGunDump = 1;
-		}
-		else
-		{
-			other->machineGunBolt = 0;
-			other->machineGunDump = 0;
-		}
+			//srand(time(NULL));
 
-		other->machineShootRockets = (int)(random() * 2);
-		other->machineGunRegen = 1 + (int)(random() * 5);
-		other->machineGunJam = 1 + (int)(random() * 5);
-		other->machineGunHeal = 1 + (int)(random() * 5);
-		other->machineGunInstaKill = 1 + (int)(random() * 5);
-		other->machineGunBack = 1 + (int)(random() * 5);
+			int num = (int)(random() * 3);;
+			//num = 1;
 
 
-		Com_Printf("Machine Gun Mods:\nBolt: %d\nDump: %d\nRockets: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
-			other->machineGunBolt, other->machineGunDump, other->machineShootRockets, other->machineGunRegen,
-			other->machineGunJam, other->machineGunHeal, other->machineGunInstaKill, other->machineGunBack);
+			if (num == 0)
+			{
+				other->machineGunBolt = 1;
+				other->machineGunDump = 0;
+			}
+			else if (num == 1)
+			{
+				other->machineGunBolt = 0;
+				other->machineGunDump = 1;
+			}
+			else
+			{
+				other->machineGunBolt = 0;
+				other->machineGunDump = 0;
+			}
+
+			other->machineShootRockets = (int)(random() * 2);
+			other->machineGunRegen = 1 + (int)(random() * 5);
+			other->machineGunJam = 1 + (int)(random() * 5);
+			other->machineGunHeal = 1 + (int)(random() * 5);
+			other->machineGunInstaKill = 1 + (int)(random() * 5);
+			other->machineGunBack = 1 + (int)(random() * 5);
+			other->machineModded = 1;
+
+
+			Com_Printf("Machine Gun Mods:\nBolt: %d\nDump: %d\nRockets: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+				other->machineGunBolt, other->machineGunDump, other->machineShootRockets, other->machineGunRegen,
+				other->machineGunJam, other->machineGunHeal, other->machineGunInstaKill, other->machineGunBack);
+		}
 
 		
 
@@ -254,156 +269,199 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 		//mattmod pickup shotgun
 		Com_Printf("Player picked up shotgun!\n");
 
-		//srand(time(NULL));
-
-		int num = (int)(random() * 2);
-		//num = 1;
-
-		if (num == 1)
+		if (other->shotgunModded == 0)
 		{
-			other->shotgunMeme2 = 1;
+			//srand(time(NULL));
+
+			int num = (int)(random() * 2);
+			//num = 1;
+
+			if (num == 1)
+			{
+				other->shotgunMeme2 = 1;
+			}
+			num = (int)(random() * 2);
+			//num = 2;
+
+			if (num == 1)
+			{
+				other->shotgunSlug = 1;
+			}
+			else
+			{
+				other->shotgunMeme3 = 1;
+			}
+
+
+
+
+			other->shotgunGunRegen = (int)(random() * 5) + 1;
+			other->shotgunGunJam = (int)(random() * 5) + 1;
+			other->shotgunGunHeal = (int)(random() * 5) + 1;
+			other->shotgunGunInstaKill = (int)(random() * 5) + 1;
+			other->shotgunGunBack = (int)(random() * 5) + 1;
+			other->shotgunModded = 1;
+
+			/*other->shotgunGunRegen = 5;
+			other->shotgunGunJam = rand() % 5 + 1;
+			other->shotgunGunHeal = 5;
+			other->shotgunGunInstaKill = 5;
+			other->shotgunGunBack = 5;*/
+
+
+			Com_Printf("Shotgun Gun Mods:\nSlug: %d\nmeme2: %d\nmeme3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+				other->shotgunSlug, other->shotgunMeme2, other->shotgunMeme3, other->shotgunGunRegen,
+				other->shotgunGunJam, other->shotgunGunHeal, other->shotgunGunInstaKill, other->shotgunGunBack);
 		}
-		num = (int)(random() * 2);
-		//num = 2;
-
-		if (num == 1)
-		{
-			other->shotgunSlug = 1;
-		}
-		else
-		{
-			other->shotgunMeme3 = 1;
-		}
-		
-
-		
-
-		other->shotgunGunRegen = (int)(random() * 5)+1;
-		other->shotgunGunJam = (int)(random() * 5)+1;
-		other->shotgunGunHeal = (int)(random() * 5) + 1;
-		other->shotgunGunInstaKill = (int)(random() * 5) + 1;
-		other->shotgunGunBack = (int)(random() * 5) + 1;
-
-		/*other->shotgunGunRegen = 5;
-		other->shotgunGunJam = rand() % 5 + 1;
-		other->shotgunGunHeal = 5;
-		other->shotgunGunInstaKill = 5;
-		other->shotgunGunBack = 5;*/
-
-
-		Com_Printf("Shotgun Gun Mods:\nSlug: %d\nmeme2: %d\nmeme3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
-			other->shotgunSlug, other->shotgunMeme2, other->shotgunMeme3, other->shotgunGunRegen,
-			other->shotgunGunJam, other->shotgunGunHeal, other->shotgunGunInstaKill, other->shotgunGunBack);
 	}
 	else if (Q_stricmp(ent->item->pickup_name, "Chaingun") == 0)
 	{
 		//mattmod pickup chain
 		Com_Printf("Player picked up chaingun!\n");
 
-		int num = (int)(random() * 3);
-		other->chaingun3 = num;
-		
-		num = (int)(random() * 3);
-		other->chaingun2 = num;
+		if (other->chaingunModded == 0)
+		{
+			int num = (int)(random() * 3);
+			other->chaingun3 = num;
 
-		num = (int)(random() * 3);
-		other->chaingun1 = num;
+			num = (int)(random() * 3);
+			other->chaingun2 = num;
 
-		other->chainRegen = (int)(random() * 5) + 1;
-		other->chainJam = (int)(random() * 5) + 1;
-		other->chainHeal = (int)(random() * 5) + 1;
-		other->chainInsta= (int)(random() * 5) + 1;
-		other->chainBack = (int)(random() * 5) + 1;
+			num = (int)(random() * 3);
+			other->chaingun1 = num;
 
+			other->chainRegen = (int)(random() * 5) + 1;
+			other->chainJam = (int)(random() * 5) + 1;
+			other->chainHeal = (int)(random() * 5) + 1;
+			other->chainInsta = (int)(random() * 5) + 1;
+			other->chainBack = (int)(random() * 5) + 1;
+			other->chaingunModded = 1;
 
-		Com_Printf("Chain Gun Mods:\nNo Spread: %d\nchain2: %d\nchain3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
-			other->chaingun1, other->chaingun2, other->chaingun3, other->chainRegen,
-			other->chainJam, other->chainHeal, other->chainInsta, other->chainBack);
+			Com_Printf("Chain Gun Mods:\nNo Spread: %d\nchain2: %d\nchain3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+				other->chaingun1, other->chaingun2, other->chaingun3, other->chainRegen,
+				other->chainJam, other->chainHeal, other->chainInsta, other->chainBack);
+		}
 
 
 	}
-	else if (Q_stricmp(ent->item->pickup_name, "weapon_bfg") == 0)
+	else if (Q_stricmp(ent->item->pickup_name, "BFG10k") == 0)
 	{
 		Com_Printf("Player picked up bfg!\n");
 
+		if (other->BFGModded == 0)
+		{
+			int num = (int)(random() * 3);
+			//num = 1;
+			other->BFG1 = num;
+
+			num = (int)(random() * 3);
+			other->BFG2 = num;
+
+			num = (int)(random() * 3);
+			other->BFG3 = num;
+
+			other->BFGRegen = (int)(random() * 5) + 1;
+			other->BFGJam = (int)(random() * 5) + 1;
+			other->BFGHeal = (int)(random() * 5) + 1;
+			other->BFGInsta = (int)(random() * 5) + 1;
+			other->BFGBack = (int)(random() * 5) + 1;
+			other->BFGModded = 1;
+
+			Com_Printf("BFG Mods:\nBFG1: %d\nBFG2: %d\nBFG3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+				other->BFG1, other->BFG2, other->BFG3, other->BFGRegen,
+				other->BFGJam, other->BFGHeal, other->BFGInsta, other->BFGBack);
+		}
+
 	}
-	else if (Q_stricmp(ent->item->pickup_name, "ammo_grenades") == 0)
+	//grenades dealt with in ammo_pickup
+	else if (Q_stricmp(ent->item->pickup_name, "Grenade launcher") == 0)
 	{
-		Com_Printf("Player picked up grenades!\n");
-		//mattmod pickup grenades
-		//mattmodpickupgrenades
-		Com_Printf("Player picked up chaingun!\n");
-
-		int num = (int)(random() * 3);
-		other->grenade1 = num;
-
-		num = (int)(random() * 3);
-		other->grenade2 = num;
-
-		num = (int)(random() * 3);
-		other->grenade3 = num;
-
-		other->grenadeRegen = (int)(random() * 5) + 1;
-		other->grenadeJam = (int)(random() * 5) + 1;
-		other->grenadeHeal = (int)(random() * 5) + 1;
-		other->grenadeInsta = (int)(random() * 5) + 1;
-		other->grenadeBack = (int)(random() * 5) + 1;
-
-
-		Com_Printf("Grenade Mods:\ngrenade1: %d\ngrenade2: %d\ngrenade3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
-			other->grenade1, other->grenade2, other->grenade3, other->grenadeRegen,
-			other->grenadeJam, other->grenadeHeal, other->grenadeInsta, other->grenadeBack);
-	}
-	else if (Q_stricmp(ent->item->pickup_name, "weapon_grenadelauncher") == 0)
-	{
+		//mattmod launcher
 		Com_Printf("Player picked up grenadelauncher!\n");
+
+		if (other->launcerModded == 0)
+		{
+			int num = (int)(random() * 2);
+			num = 1;
+			other->launcer1 = num;
+
+			num = (int)(random() * 2);
+			other->launcer2 = num;
+
+			num = (int)(random() * 2);
+			other->launcer3 = num;
+
+			other->launcerBack = (int)(random() * 5) + 1;
+			other->launcerJam = (int)(random() * 5) + 1;
+			other->launcerHeal = (int)(random() * 5) + 1;
+			other->launcerInsta = (int)(random() * 5) + 1;
+			other->launcerBack = (int)(random() * 5) + 1;
+			other->launcerModded = 1;
+
+			Com_Printf("Grenade Launcher Mods:\nmeme1: %d\nmeme2: %d\nmeme3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+				other->launcer1, other->launcer2, other->launcer3, other->launcerRegen,
+				other->launcerJam, other->launcerHeal, other->launcerInsta, other->launcerBack);
+		}
+
 	}
 	else if (Q_stricmp(ent->item->pickup_name, "hyperblaster") == 0)
 	{
 		Com_Printf("Player picked up hyperblaster!\n");
 		//mattmod pickup hyperblsater
 
-		int num = (int)(random() * 2);
-		num = 1;
-		other->hyper1 = num;
+		if (other->hyperModded == 0)
+		{
+			int num = (int)(random() * 2);
+			other->hyper1 = num;
 
-		num = (int)(random() * 2);
-		//other->chaingun2 = num;
+			num = (int)(random() * 2);
+			other->hyper2 = num;
 
-		num = (int)(random() * 2);
-		//other->chaingun1 = num;
+			num = (int)(random() * 2);
+			other->hyper2 = num;
 
-		/*other->hyperRegen = (int)(random() * 5) + 1;
-		other->hyperJam = (int)(random() * 5) + 1;
-		other->hyperHeal = (int)(random() * 5) + 1;
-		other->hyperInsta = (int)(random() * 5) + 1;
-		other->hyperBack = (int)(random() * 5) + 1;*/
+			other->hyperRegen = (int)(random() * 5) + 1;
+			other->hyperJam = (int)(random() * 5) + 1;
+			other->hyperHeal = (int)(random() * 5) + 1;
+			other->hyperInsta = (int)(random() * 5) + 1;
+			other->hyperBack = (int)(random() * 5) + 1;
+			other->hyperModded = 1;
 
-		Com_Printf("Hyperblaster Mods:\nmeme1: %d\nmeme2: %d\nmeme3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
-			other->hyper1, other->hyper2, other->hyper3, other->hyperRegen,
-			other->hyperJam, other->hyperHeal, other->hyperInsta, other->hyperBack);
+			Com_Printf("Hyperblaster Mods:\nmeme1: %d\nmeme2: %d\nmeme3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+				other->hyper1, other->hyper2, other->hyper3, other->hyperRegen,
+				other->hyperJam, other->hyperHeal, other->hyperInsta, other->hyperBack);
+		}
 
 	}
 	else if (Q_stricmp(ent->item->pickup_name, "Railgun") == 0)
 	{
 		Com_Printf("Player picked up railgun!\n");
 
-		int num = (int)(random() * 3);
-		other->rail1 = num;
+		if (other->railgunModded == 0)
+		{
+			int num = (int)(random() * 3);
+			other->rail1 = num;
 
-		num = (int)(random() * 3);
-		other->rail2 = num;
+			num = (int)(random() * 3);
+			other->rail2 = num;
 
-		num = (int)(random() * 3);
-		other->rail3 = num;
+			num = (int)(random() * 3);
+			other->rail3 = num;
 
-		Com_Printf("Rail Gun Mods:\nMany Shots: %d\nHalf Range: %d\nRandomDamage: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
-			other->rail1, other->rail2, other->rail3, other->rail3,
-			other->railJam, other->railHeal, other->railInsta, other->railBack);
+			other->railRegen = (int)(random() * 5) + 1;
+			other->railJam = (int)(random() * 5) + 1;
+			other->railHeal = (int)(random() * 5) + 1;
+			other->railInsta = (int)(random() * 5) + 1;
+			other->railBack = (int)(random() * 5) + 1;
+			other->railgunModded = 1;
+
+			Com_Printf("Rail Gun Mods:\nMany Shots: %d\nHalf Range: %d\nRandomDamage: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+				other->rail1, other->rail2, other->rail3, other->rail3,
+				other->railJam, other->railHeal, other->railInsta, other->railBack);
+		}
 	}
 	else
 	{
-
 		Com_Printf("Player picked up some item %s!\n",ent->item->pickup_name);
 	}
 
@@ -1086,8 +1144,46 @@ void weapon_grenadelauncher_fire (edict_t *ent)
 	vec3_t	start;
 	int		damage = 120;
 	float	radius;
+	radius = damage + 40;
+	//mattmod grenadelauncher
+	//mattmodgrenadelauncher
+	//mattmod launcher
+	//mattmodlauncher
 
-	radius = damage+40;
+	if (ent->grenadeJam == 5)
+	{
+		jammedMatt();
+		Com_Printf("Ummm... You jammed your grenadelauncher?");
+		fire_grenade2(ent, start, 0, damage, 0, 1, radius, false);
+	}
+
+	if (ent->grenadeRegen == 5)
+	{
+		regenMatt();
+		ent->client->pers.inventory[ent->client->ammo_index]++;
+	}
+
+	if (ent->grenadeHeal == 5)
+	{
+		healMatt(ent);
+		ent->health+=10;
+	}
+
+	if (ent->grenadeBack == 5)
+	{
+		backwardsMatt();
+		forward[0] *= -1;
+		forward[1] *= -1;
+		forward[2] *= -1;
+	}
+
+	if (ent->grenadeInsta == 5)
+	{
+		instaMatt();
+		damage = 999;
+	}
+
+	
 	if (is_quad)
 		damage *= 4;
 
@@ -1098,7 +1194,40 @@ void weapon_grenadelauncher_fire (edict_t *ent)
 	VectorScale (forward, -2, ent->client->kick_origin);
 	ent->client->kick_angles[0] = -1;
 
-	fire_grenade (ent, start, forward, damage, 600, 2.5, radius);
+
+	if (ent->launcer1 == 1)
+	{
+		fire_grenade(ent, start, forward, damage, 600, 2.5, radius);
+		forward[0] += right[0] * 10;
+		forward[1] += right[1] * 10;
+		forward[2] += right[2] * 10;
+		fire_grenade(ent, start, forward, damage, 600, 2.5, radius);
+		forward[0] -= right[0] * 20;
+		forward[1] -= right[1] * 20;
+		forward[2] -= right[2] * 20;
+		fire_grenade(ent, start, forward, damage, 600, 2.5, radius);
+	}
+	else if (ent->launcer2 == 1)
+	{
+		int num = ent->client->pers.inventory[ent->client->ammo_index];
+
+
+		for (int c = 1;c < num / 2;c++)
+		{
+			fire_bullet(ent, start, forward, damage, 0, 0, 0, MOD_MACHINEGUN);
+			//Com_Printf("Fired: %d \n",c);
+		}
+
+		ent->client->pers.inventory[ent->client->ammo_index = 0];
+	}
+	else if (ent->launcer3 == 1)
+	{
+		fire_shotgun(ent, start, forward, damage, 0, DEFAULT_SHOTGUN_HSPREAD, DEFAULT_SHOTGUN_VSPREAD, DEFAULT_SSHOTGUN_COUNT / 2, MOD_SSHOTGUN);
+		fire_shotgun(ent, start, forward, damage, 0, DEFAULT_SHOTGUN_HSPREAD, DEFAULT_SHOTGUN_VSPREAD, DEFAULT_SSHOTGUN_COUNT / 2, MOD_SSHOTGUN);
+		fire_shotgun(ent, start, forward, damage, 0, DEFAULT_SHOTGUN_HSPREAD, DEFAULT_SHOTGUN_VSPREAD, DEFAULT_SSHOTGUN_COUNT / 2, MOD_SSHOTGUN);
+	}
+	else
+		fire_grenade (ent, start, forward, damage, 600, 2.5, radius);
 
 	gi.WriteByte (svc_muzzleflash);
 	gi.WriteShort (ent-g_edicts);
@@ -1419,7 +1548,7 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 		{
 			//do something
 			//random damage
-			damage = (int)random() % 20 + 1;
+			damage = ((int)random() % 20) + 1;
 			fire_blaster(ent, start, forward, damage, 1000, effect, hyper);
 			Com_Printf("Hyperblaster Damage was randomized:%d\n",damage);
 		}
@@ -2546,6 +2675,37 @@ void weapon_bfg_fire (edict_t *ent)
 	else
 		damage = 500;
 
+	if (ent->BFGJam == 5)
+	{
+		jammedMatt();
+		return;
+	}
+
+	if (ent->BFGRegen == 5)
+	{
+		regenMatt();
+		ent->client->pers.inventory[ent->client->ammo_index] += 50;
+	}
+
+	if (ent->BFGHeal == 5)
+	{
+		healMatt(ent);
+		ent->health += 10;
+	}
+
+	if (ent->BFGInsta == 5)
+	{
+		instaMatt();
+		damage = 999;
+	}
+
+	if (ent->BFGBack == 5)
+	{
+		forward[0] *= -1;
+		forward[1] *= -1;
+		forward[2] *= -1;
+	}
+
 	if (ent->client->ps.gunframe == 9)
 	{
 		// send muzzle flash
@@ -2582,6 +2742,99 @@ void weapon_bfg_fire (edict_t *ent)
 
 	VectorSet(offset, 8, 8, ent->viewheight-8);
 	P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
+
+	//mattmod bfg
+	if (ent->BFG1 == 1)
+	{
+		
+		//directly behind
+		forward[0] *= -1;
+		forward[1] *= -1;
+		forward[2] *= -1;
+		fire_bfg(ent, start, forward, damage, 400, damage_radius);
+
+		//to the right
+		fire_bfg(ent, start, forward, damage, 400, damage_radius);
+
+		right[0] *= -1;
+		right[1] *= -1;
+		right[2] *= -1;
+
+		//to the left
+		fire_bfg(ent, start, forward, damage, 400, damage_radius);
+
+
+
+		//back left
+		vec3_t diag;
+		VectorAdd(forward, right, diag);
+		VectorNormalize(diag);
+
+		fire_bfg(ent, start, forward, damage, 400, damage_radius);
+
+		//back right
+		right[0] *= -1;
+		right[1] *= -1;
+		right[2] *= -1;
+
+		vec3_t diag2;
+		VectorAdd(forward, right, diag2);
+		VectorNormalize(diag2);
+
+		fire_bfg(ent, start, forward, damage, 400, damage_radius);
+
+		//not working
+		//front right
+
+		forward[0] *= -1;
+		forward[1] *= -1;
+		forward[2] *= -1;
+		vec3_t diag3;
+
+		VectorAdd(forward, right, diag3);
+		VectorNormalize(diag3);
+
+		fire_bfg(ent, start, forward, damage, 400, damage_radius);
+
+		//front left
+		right[0] *= -1;
+		right[1] *= -1;
+		right[2] *= -1;
+		vec3_t diag4;
+		VectorAdd(forward, right, diag4);
+		VectorNormalize(diag4);
+
+		fire_bfg(ent, start, forward, damage, 400, damage_radius);
+	}
+
+	if (ent->BFG2 == 1)
+	{
+		int num = ent->client->pers.inventory[ent->client->ammo_index];
+
+		for (int c = 1;c < num / 2;c++)
+		{
+			fire_bfg(ent, start, forward, damage, 400, damage_radius);
+			//Com_Printf("Fired: %d \n",c);
+		}
+
+		ent->client->pers.inventory[ent->client->ammo_index = 0];
+	}
+
+	if (ent->BFG3 == 1)
+	{
+		//fire everything
+		fire_bfg(ent, start, forward, damage, 400, damage_radius);
+
+		fire_bullet(ent, start, forward, damage, 0, 0, 0, MOD_MACHINEGUN);
+		fire_shotgun(ent, start, forward, damage, 0, DEFAULT_SHOTGUN_HSPREAD, DEFAULT_SHOTGUN_VSPREAD, DEFAULT_SSHOTGUN_COUNT / 2, MOD_SSHOTGUN);
+		fire_blaster(ent, start, forward, damage, 1000, 0, true);
+
+		fire_grenade(ent, start, forward, damage, 600, 2.5, 150);
+		fire_grenade2(ent, start, forward, damage, 90, 10, 90, 0);
+		fire_rocket(ent, start, forward, damage, 650, damage_radius, 150);
+		fire_rail(ent, start, forward, damage, 0);
+	}
+	
 	fire_bfg (ent, start, forward, damage, 400, damage_radius);
 
 	ent->client->ps.gunframe++;

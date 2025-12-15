@@ -19,8 +19,112 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 #include "g_local.h"
 #include "m_player.h"
+/*
+void Cmd_Drop_f (edict_t *ent)
+{
+	int			index;
+	gitem_t		*it;
+	char		*s;
 
+	s = gi.args();
+	it = FindItem (s);
+	if (!it)
+	{
+		gi.cprintf (ent, PRINT_HIGH, "unknown item: %s\n", s);
+		return;
+	}
+	if (!it->drop)
+	{
+		gi.cprintf (ent, PRINT_HIGH, "Item is not dropable.\n");
+		return;
+	}
+	index = ITEM_INDEX(it);
+	if (!ent->client->pers.inventory[index])
+	{
+		gi.cprintf (ent, PRINT_HIGH, "Out of item: %s\n", s);
+		return;
+	}
+
+	it->drop (ent, it);
+}
+*/
 //mattMod
+void dropWeapon(edict_t* ent)
+{
+	gitem_t* weapon = ent->client->pers.weapon;
+
+	if (!weapon || ent->deadflag || ent->health <= 0)
+		return;
+
+	// Optional: prevent dropping the blaster
+	if (strcmp(weapon->classname, "blaster") == 0)
+	{
+		gi.cprintf(ent, PRINT_HIGH, "You cannot drop the blaster!\n");
+		return;
+	}
+
+	gitem_t* item = FindItem(weapon->pickup_name);
+	if (!item)
+	{
+		gi.cprintf(ent, PRINT_HIGH, "Unknown item: %s\n", weapon->pickup_name);
+		return;
+	}
+
+	if (!item->drop)
+	{
+		gi.cprintf(ent, PRINT_HIGH, "%s is not droppable.\n", weapon->pickup_name);
+		return;
+	}
+
+	ent->client->newweapon = FindItem("Blaster");
+	ChangeWeapon(ent);
+
+	//Chain of things to check for each weapon name and set flag to kill the weapon on pickup
+	if (Q_stricmp(item->pickup_name, "Railgun") == 0)
+	{
+		ent->railgunModded = 0;
+	}
+	else if (Q_stricmp(item->pickup_name, "hyperblaster") == 0)
+	{
+		ent->hyperModded = 0;
+	}
+	else if (Q_stricmp(item->pickup_name, "Grenade launcher") == 0)
+	{
+		ent->launcerModded = 0;
+	}
+	else if (Q_stricmp(item->pickup_name, "BFG10k") == 0)
+	{
+		ent->BFGModded = 0;
+	}
+	else if (Q_stricmp(item->pickup_name, "Chaingun") == 0)
+	{
+		ent->chaingunModded = 0;
+	}
+	else if (Q_stricmp(item->pickup_name, "Shotgun") == 0)
+	{
+		ent->shotgunModded = 0;
+	}
+	else if (Q_stricmp(item->pickup_name, "machinegun") == 0)
+	{
+		ent->machineModded = 0;
+	}
+	else if (Q_stricmp(item->pickup_name, "Super Shotgun") == 0)
+	{
+		ent->superModded = 0;
+	}
+	else if (Q_stricmp(item->pickup_name, "Rocket Launcher") == 0)
+	{
+		ent->rocketModded = 0;
+	}
+	else
+	{
+		Com_Printf("Not Quake2 OG Weapon, can't reset mods on it!\n");
+	}
+
+
+	item->drop(ent, item);
+}
+
 void buyWeapon(edict_t* ent)
 {
 	if (ent->playerPoints <= 49)
@@ -112,7 +216,7 @@ void spawnWeapon(edict_t* ent)
 	//w->s.origin[2] += 16;
 
 
-	if (Q_stricmp(name, "shotgun") == 0)
+	if (Q_stricmp(name, "shotgun") == 0 || Q_stricmp(name, "sg") == 0)
 	{
 		w->classname = "weapon_shotgun";
 
@@ -122,39 +226,39 @@ void spawnWeapon(edict_t* ent)
 			Com_Printf("Jammed Shotgun!\n");
 		}*/
 	}
-	else if (Q_stricmp(name, "supershotgun") == 0)
+	else if (Q_stricmp(name, "supershotgun") == 0 || Q_stricmp(name, "ssg") == 0)
 	{
 		w->classname = "weapon_supershotgun";
 	}
-	else if (Q_stricmp(name, "machinegun") == 0)
+	else if (Q_stricmp(name, "machinegun") == 0 || Q_stricmp(name, "mg") == 0)
 	{
 		w->classname = "weapon_machinegun";
 	}
-	else if (Q_stricmp(name, "chaingun") == 0)
+	else if (Q_stricmp(name, "chaingun") == 0 || Q_stricmp(name, "cg") == 0)
 	{
 		w->classname = "weapon_chaingun";
 	}
-	else if (Q_stricmp(name, "grenadelauncher") == 0)
+	else if (Q_stricmp(name, "grenadelauncher") == 0 || Q_stricmp(name, "gl") == 0)
 	{
 		w->classname = "weapon_grenadelauncher";
 	}
-	else if (Q_stricmp(name, "rocketlauncher") == 0)
+	else if (Q_stricmp(name, "rocketlauncher") == 0 || Q_stricmp(name, "rl") == 0)
 	{
 		w->classname = "weapon_rocketlauncher";
 	}
-	else if (Q_stricmp(name, "hyperblaster") == 0)
+	else if (Q_stricmp(name, "hyperblaster") == 0 || Q_stricmp(name, "hb") == 0)
 	{
 		w->classname = "weapon_hyperblaster";
 	}
-	else if (Q_stricmp(name, "railgun") == 0)
+	else if (Q_stricmp(name, "railgun") == 0 || Q_stricmp(name, "rg") == 0)
 	{
 		w->classname = "weapon_railgun";
 	}
-	else if (Q_stricmp(name, "bfg") == 0)
+	else if (Q_stricmp(name, "bfg") == 0 || Q_stricmp(name, "b") == 0)
 	{
 		w->classname = "weapon_bfg";
 	}
-	else if (Q_stricmp(name,"grenades") == 0)
+	else if (Q_stricmp(name,"grenades") == 0 || Q_stricmp(name, "g") == 0)
 	{
 		w->classname = "ammo_grenades";
 	}
@@ -1145,6 +1249,8 @@ void ClientCommand (edict_t *ent)
 		givePoints(ent);
 	else if (Q_stricmp(cmd, "buy") == 0)
 		buyWeapon(ent);
+	else if (Q_stricmp(cmd, "dropMatt") == 0)
+		dropWeapon(ent);
 	else	// anything that doesn't match a command will be a chat
 		Cmd_Say_f (ent, false, true);
 }

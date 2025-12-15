@@ -496,6 +496,33 @@ qboolean Pickup_Ammo (edict_t *ent, edict_t *other)
 
 	oldcount = other->client->pers.inventory[ITEM_INDEX(ent->item)];
 
+	if (Q_stricmp(ent->item->pickup_name, "grenades") == 0)
+	{
+		Com_Printf("Player picked up grenades!\n");
+		//mattmod pickup grenades
+		//mattmodpickupgrenades
+
+		int num = (int)(random() * 3);
+		other->grenade1 = num;
+
+		num = (int)(random() * 3);
+		other->grenade2 = num;
+
+		num = (int)(random() * 3);
+		other->grenade3 = num;
+
+		other->grenadeRegen = (int)(random() * 5) + 1;
+		other->grenadeJam = (int)(random() * 5) + 1;
+		other->grenadeHeal = (int)(random() * 5) + 1;
+		other->grenadeInsta = (int)(random() * 5) + 1;
+		other->grenadeBack = (int)(random() * 5) + 1;
+
+
+		Com_Printf("Grenade Mods:\ngrenade1: %d\ngrenade2: %d\ngrenade3: %d\nRegen: %d\nJam: %d\nHeal: %d\nInsta: %d\nBack: %d\n",
+			other->grenade1, other->grenade2, other->grenade3, other->grenadeRegen,
+			other->grenadeJam, other->grenadeHeal, other->grenadeInsta, other->grenadeBack);
+	}
+
 	if (!Add_Ammo (other, ent->item, count))
 		return false;
 

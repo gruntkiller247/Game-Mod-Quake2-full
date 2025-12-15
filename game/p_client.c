@@ -1391,6 +1391,29 @@ void ClientBegin (edict_t *ent)
 	ent->grenadeInsta = 0;
 	ent->grenadeBack = 0;
 
+	//grenade launcher mods
+	ent->launcerModded = 0;
+	ent->launcer1 = 0;
+	ent->launcer2 = 0;
+	ent->launcer3 = 0;
+	//generic
+	ent->launcerRegen = 0;
+	ent->launcerJam = 0;
+	ent->launcerHeal = 0;
+	ent->launcerInsta = 0;
+	ent->launcerBack = 0;
+
+	//BFG mods
+	ent->BFGModded = 0;
+	ent->BFG1 = 0;
+	ent->BFG2 = 0;
+	ent->BFG3 = 0;
+	//generic
+	ent->BFGRegen = 0;
+	ent->BFGJam = 0;
+	ent->BFGHeal = 0;
+	ent->BFGInsta = 0;
+	ent->BFGBack = 0;
 
 
 	int		i;
@@ -1901,3 +1924,4 @@ void ClientBeginServerFrame (edict_t *ent)
 
 	client->latched_buttons = 0;
 }
+
