@@ -158,6 +158,7 @@ void buyWeapon(edict_t* ent)
 	ED_CallSpawn(w);
 	Com_Printf("Player bought a %s\n!",name);
 
+	ent->client->showWeaponMattEnd = level.time;
 	helpWeaponMatt(ent);
 }
 

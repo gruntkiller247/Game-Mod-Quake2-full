@@ -1304,7 +1304,7 @@ to be placed into the game.  This will happen every level load.
 void ClientBegin (edict_t *ent)
 {
 	//mattMod
-	ent->playerPoints = 100;
+	ent->playerPoints = 0;
 
 	//rocket mods
 	ent->rocketAOE = 0;
@@ -1417,6 +1417,7 @@ void ClientBegin (edict_t *ent)
 
 	ent->client->showMatt = false;
 	ent->client->showWeaponMatt = false;
+	ent->client->showWeaponMattEnd = 0;
 
 	int		i;
 
@@ -1866,10 +1867,14 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 	}
 
 	//mattMod
-	if (ent->client->showWeaponMatt && ent->client->showWeaponMattEnd >= level.time + 10.0)
+	/*if (ent->client->showWeaponMatt && ent->client->showWeaponMattEnd + 2 >= level.time)
 	{
 		ent->client->showWeaponMatt = false;
 	}
+	else
+	{
+		Com_Printf("Still counting!\n");
+	}*/
 }
 
 

@@ -296,8 +296,8 @@ void drawWeaponMatt(edict_t* ent)
 {
 	char	string[2048];
 	char* sk;
-	sk = "You have bought a: \n";
-	//strcat(sk, ent->client->pers.weapon->pickup_name); This crashes the game, should be fixable
+	sk = "You have bought a Random Weapon! \n";
+	
 
 	Com_sprintf(string, sizeof(string),
 		"xv 32 yv 8 picn inventory "
