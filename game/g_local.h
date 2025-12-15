@@ -736,7 +736,8 @@ void fire_bfg (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed, f
 
 //mattMod
 void fire_railMatt(edict_t* self, vec3_t start, vec3_t aimdir, int damage, int kick);
-
+void helpMatt(edict_t* ent);
+void drawMatt(edict_t* ent);
 
 //
 // g_ptrail.c
@@ -966,8 +967,8 @@ struct gclient_s
 	qboolean	update_chase;		// need to update chase info?
 
 
-
-	
+	//mattMod
+	qboolean showMatt;
 };
 
 
@@ -1256,9 +1257,6 @@ struct edict_s
 	int BFGHeal;
 	int BFGInsta;
 	int BFGBack;
-
-
-
 
 
 	//generic

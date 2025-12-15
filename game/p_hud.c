@@ -291,6 +291,68 @@ void Cmd_Score_f (edict_t *ent)
 	DeathmatchScoreboard (ent);
 }
 
+void drawMatt(edict_t* ent)
+{
+	char	string[2048];
+	char* sk;
+
+	//Com_Printf("Inside drawMatt!\n");
+
+	sk = "mattMod Help";
+
+	// send the layout
+	Com_sprintf(string, sizeof(string),
+		"xv 32 yv 8 picn help "			// background
+		"xv 202 yv 12 string2 \"%s\" "		// skill
+		"xv 0 yv 24 cstring2 \"%s\" "		// level name
+		"xv 0 yv 54 cstring2 \"%s\" "		// help 1
+		"xv 0 yv 110 cstring2 \"%s\" "		// help 2
+		"xv 50 yv 164 string2 \"%s\" "
+		,
+		sk,
+		"Weapon Randomizer!",
+		"This mod gives each weapon \n3 weapon specific mods and 5 generic mods!\nKilling enemies gives you points\n and rarely a weapon!",
+		"By Pressing: U you open this menu!\nX will tell you how many points you have!\nV will let you buy a random weapon for 50 points!",
+		"F will let you drop any weapon except the blaster"
+		);
+
+	gi.WriteByte(svc_layout);
+	gi.WriteString(string);
+	gi.unicast(ent, true);
+}
+
+
+//mattMod
+void helpMatt(edict_t* ent)
+{
+
+	if (deathmatch->value)
+	{
+		Cmd_Score_f(ent);
+		return;
+	}
+
+	ent->client->showinventory = false;
+	ent->client->showscores = false;
+	ent->client->showhelp = false;
+
+	if (ent->client->showMatt && (ent->client->pers.game_helpchanged == game.helpchanged))
+	{
+		ent->client->showMatt = false;
+		ent->client->showhelp = false;
+		return;
+	}
+	//Com_Printf("Showmatt is false!\n");
+	
+
+	ent->client->showMatt = true;
+	ent->client->showhelp = true;
+	ent->client->pers.helpchanged = 0;
+
+	drawMatt(ent);
+
+}
+
 
 /*
 ==================
@@ -312,6 +374,10 @@ void HelpComputer (edict_t *ent)
 		sk = "hard";
 	else
 		sk = "hard+";
+
+	//sk = "fuck you matt!";
+
+	//sk="mattMod Help";
 
 	// send the layout
 	Com_sprintf (string, sizeof(string),
@@ -354,6 +420,7 @@ void Cmd_Help_f (edict_t *ent)
 
 	ent->client->showinventory = false;
 	ent->client->showscores = false;
+	ent->client->showMatt = false;
 
 	if (ent->client->showhelp && (ent->client->pers.game_helpchanged == game.helpchanged))
 	{

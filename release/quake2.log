@@ -1,2 +1,90 @@
-﻿win32\q2.rc(10): fatal error RC1015: cannot open include file 'afxres.h'.
+﻿  menu.c
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(421,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(422,2): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(513,36): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(518,42): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(523,43): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1036,34): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1041,33): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1046,42): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1051,34): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1056,33): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1061,35): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1066,33): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1108,46): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1116,36): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1128,35): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1133,35): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1138,37): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1143,39): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1153,14): warning C4210: nonstandard extension used: function given file scope
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1148,32): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1168,43): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1907,33): warning C4100: 'data': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1913,35): warning C4100: 'data': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1919,33): warning C4100: 'data': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1925,33): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1930,33): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(1935,32): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2058,4): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2055,7): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2245,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2268,29): warning C4100: 'self': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2273,28): warning C4100: 'self': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2283,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2297,34): warning C4100: 'self': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2332,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2392,27): warning C4100: 'self': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2411,4): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2399,30): warning C4100: 'self': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2444,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2436,35): warning C4100: 'self': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2581,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2585,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2589,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2641,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2651,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2668,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2670,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2680,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2538,14): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(2546,12): warning C4996: 'filelength': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _filelength. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3315,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3387,33): warning C4100: 'self': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3392,39): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3397,33): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3403,34): warning C4100: 'unused': unreferenced parameter
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3429,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3431,2): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3451,16): warning C4210: nonstandard extension used: function given file scope
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3490,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3491,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3502,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3503,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3533,10): warning C4456: declaration of 'a' hides previous local declaration
+      C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3480,9):
+      see declaration of 'a'
+  
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3533,14): warning C4456: declaration of 'b' hides previous local declaration
+      C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3480,13):
+      see declaration of 'b'
+  
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3533,18): warning C4456: declaration of 'c' hides previous local declaration
+      C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3480,17):
+      see declaration of 'c'
+  
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3547,6): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3572,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3552,21): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3571,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3628,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3632,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3637,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3642,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3643,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3680,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3769,15): warning C4210: nonstandard extension used: function given file scope
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3786,7): warning C4189: 'maxframe': local variable is initialized but not referenced
+C:\Users\Matthew\source\repos\gruntkiller247\Game-Mod-Quake2-full\client\menu.c(3580,1): warning C4715: 'PlayerConfig_ScanDirectories': not all control paths return a value
+win32\q2.rc(10): fatal error RC1015: cannot open include file 'afxres.h'.
   

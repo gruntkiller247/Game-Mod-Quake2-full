@@ -508,24 +508,78 @@ When a monster dies, it fires all of its targets with the current
 enemy as activator.
 ================
 */
-void monster_death_use (edict_t *self)
+void monster_death_use(edict_t* self)
 {
-	self->flags &= ~(FL_FLY|FL_SWIM);
+	self->flags &= ~(FL_FLY | FL_SWIM);
 	self->monsterinfo.aiflags &= AI_GOOD_GUY;
 
-	if (self->item)
+	//mattMod
+	int drop = random() * 11;
+
+	if (drop <= 1)
 	{
-		Drop_Item (self, self->item);
-		self->item = NULL;
+		char* name;
+		edict_t* w = G_Spawn();
+
+		Com_Printf("Killed an enemy! Have a weapon!\n");
+
+		VectorCopy(self->s.origin, w->s.origin);
+
+		int num = random() * 11;
+		if (num == 0)
+		{
+			name = "weapon_shotgun";
+		}
+		else if (num == 1)
+		{
+			name = "weapon_supershotgun";
+		}
+		else if (num == 2)
+		{
+			name = "weapon_machinegun";
+		}
+		else if (num == 3)
+		{
+			name = "weapon_chaingun";
+		}
+		else if (num == 4)
+		{
+			name = "weapon_grenadelauncher";
+		}
+		else if (num == 5)
+		{
+			name = "weapon_rocketlauncher";
+		}
+		else if (num == 6)
+		{
+			name = "weapon_hyperblaster";
+		}
+		else if (num == 7)
+		{
+			name = "weapon_railgun";
+		}
+		else
+		{
+			name = "weapon_bfg";
+		}
+
+		w->classname = name;
+		ED_CallSpawn(w);
+
+		if (self->item)
+		{
+			Drop_Item(self, self->item);
+			self->item = NULL;
+		}
+
+		if (self->deathtarget)
+			self->target = self->deathtarget;
+
+		if (!self->target)
+			return;
+
+		G_UseTargets(self, self->enemy);
 	}
-
-	if (self->deathtarget)
-		self->target = self->deathtarget;
-
-	if (!self->target)
-		return;
-
-	G_UseTargets (self, self->enemy);
 }
 
 

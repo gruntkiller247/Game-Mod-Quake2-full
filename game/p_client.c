@@ -1415,6 +1415,7 @@ void ClientBegin (edict_t *ent)
 	ent->BFGInsta = 0;
 	ent->BFGBack = 0;
 
+	ent->client->showMatt = false;
 
 	int		i;
 

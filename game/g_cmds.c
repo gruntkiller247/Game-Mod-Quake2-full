@@ -19,35 +19,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 #include "g_local.h"
 #include "m_player.h"
-/*
-void Cmd_Drop_f (edict_t *ent)
-{
-	int			index;
-	gitem_t		*it;
-	char		*s;
 
-	s = gi.args();
-	it = FindItem (s);
-	if (!it)
-	{
-		gi.cprintf (ent, PRINT_HIGH, "unknown item: %s\n", s);
-		return;
-	}
-	if (!it->drop)
-	{
-		gi.cprintf (ent, PRINT_HIGH, "Item is not dropable.\n");
-		return;
-	}
-	index = ITEM_INDEX(it);
-	if (!ent->client->pers.inventory[index])
-	{
-		gi.cprintf (ent, PRINT_HIGH, "Out of item: %s\n", s);
-		return;
-	}
 
-	it->drop (ent, it);
-}
-*/
 //mattMod
 void dropWeapon(edict_t* ent)
 {
@@ -135,6 +108,8 @@ void buyWeapon(edict_t* ent)
 	else
 	{
 		ent->playerPoints -= 50;
+		Com_Printf("|This is the menu to buy a weapon!|\n"
+			"|Test!|");
 	}
 
 	char* name; 
@@ -187,6 +162,12 @@ void buyWeapon(edict_t* ent)
 
 void givePoints(edict_t* ent)
 {
+	if (deathmatch->value && !sv_cheats->value)
+	{
+		gi.cprintf(ent, PRINT_HIGH, "You must run the server with '+set cheats 1' to enable this command.\n");
+		return;
+	}
+
 	char* name = gi.argv(1);
 	if (!name || name[0] == 0)
 	{
@@ -1251,6 +1232,11 @@ void ClientCommand (edict_t *ent)
 		buyWeapon(ent);
 	else if (Q_stricmp(cmd, "dropMatt") == 0)
 		dropWeapon(ent);
+	else if (Q_stricmp(cmd, "mh") == 0)
+	{
+		//Com_Printf("\nTrying to open custom help menu!\n");
+		helpMatt(ent);
+	}
 	else	// anything that doesn't match a command will be a chat
 		Cmd_Say_f (ent, false, true);
 }

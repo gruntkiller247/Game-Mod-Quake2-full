@@ -163,7 +163,7 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	{
 		//mattmod pickup rocket
 		
-		Com_Printf("Player picked up a rocket launcher!\n");
+		Com_Printf("\nPlayer picked up a rocket launcher!\n");
 		
 		if (other->rocketModded == 0)
 		{
@@ -191,7 +191,7 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	else if (Q_stricmp(ent->item->pickup_name,"Super Shotgun") == 0)
 	{
 		//mattmod pickup super shotgun
-		Com_Printf("Player picked up a super shotgun!\n");
+		Com_Printf("\nPlayer picked up a super shotgun!\n");
 		//srand(time(NULL));
 		
 		if (other->superModded == 0)
@@ -221,7 +221,7 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	else if (Q_stricmp(ent->item->pickup_name,"machinegun") == 0)
 	{
 		//mattmod pickup machine
-		Com_Printf("Player picked up a machine gun!\n");
+		Com_Printf("\nPlayer picked up a machine gun!\n");
 		
 		if (other->machineModded == 0)
 		{
@@ -267,7 +267,7 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	else if (Q_stricmp(ent->item->pickup_name, "Shotgun") == 0)
 	{
 		//mattmod pickup shotgun
-		Com_Printf("Player picked up shotgun!\n");
+		Com_Printf("\nPlayer picked up shotgun!\n");
 
 		if (other->shotgunModded == 0)
 		{
@@ -317,7 +317,7 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	else if (Q_stricmp(ent->item->pickup_name, "Chaingun") == 0)
 	{
 		//mattmod pickup chain
-		Com_Printf("Player picked up chaingun!\n");
+		Com_Printf("\nPlayer picked up chaingun!\n");
 
 		if (other->chaingunModded == 0)
 		{
@@ -346,7 +346,7 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	}
 	else if (Q_stricmp(ent->item->pickup_name, "BFG10k") == 0)
 	{
-		Com_Printf("Player picked up bfg!\n");
+		Com_Printf("\nPlayer picked up bfg!\n");
 
 		if (other->BFGModded == 0)
 		{
@@ -377,7 +377,7 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	else if (Q_stricmp(ent->item->pickup_name, "Grenade launcher") == 0)
 	{
 		//mattmod launcher
-		Com_Printf("Player picked up grenadelauncher!\n");
+		Com_Printf("\nPlayer picked up grenadelauncher!\n");
 
 		if (other->launcerModded == 0)
 		{
@@ -406,7 +406,7 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	}
 	else if (Q_stricmp(ent->item->pickup_name, "hyperblaster") == 0)
 	{
-		Com_Printf("Player picked up hyperblaster!\n");
+		Com_Printf("\nPlayer picked up hyperblaster!\n");
 		//mattmod pickup hyperblsater
 
 		if (other->hyperModded == 0)
@@ -435,7 +435,7 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	}
 	else if (Q_stricmp(ent->item->pickup_name, "Railgun") == 0)
 	{
-		Com_Printf("Player picked up railgun!\n");
+		Com_Printf("\nPlayer picked up railgun!\n");
 
 		if (other->railgunModded == 0)
 		{
@@ -462,7 +462,7 @@ qboolean Pickup_Weapon (edict_t *ent, edict_t *other)
 	}
 	else
 	{
-		Com_Printf("Player picked up some item %s!\n",ent->item->pickup_name);
+		Com_Printf("\nPlayer picked up some item %s!\n",ent->item->pickup_name);
 	}
 
 	/*if (ent->item == FindItem("Machinegun"))
@@ -2105,8 +2105,6 @@ void Chaingun_Fire (edict_t *ent)
 
 
 	//mattmod chaingun
-
-	
 
 
 	if (is_quad)
