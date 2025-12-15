@@ -14,3 +14,10 @@ Players can see their balance by pressing: X  (If server cheats are enabled, the
 Players can see the in game help menu by pressing: U
 
 For balance, the blaster is both undropable and unable to get all negative mods.
+
+To install this mod:
+ Download the mod
+ Place the mod in the Quake 2 source folder next to the folder basesq2
+ Extract the mod
+ Once inside of quake 2, open the console and type game mattMod to enable the mod
+   If you want to create a shortcut to open the mod on launch, create a shortcut to your quake 2 executable and within the launch properties/target line write "+set game mattMod"
